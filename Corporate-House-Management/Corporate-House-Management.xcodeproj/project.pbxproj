@@ -15,6 +15,10 @@
 		2554287E27626D9F009460EC /* Corporate_House_ManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554287D27626D9F009460EC /* Corporate_House_ManagementTests.swift */; };
 		2554288827626D9F009460EC /* Corporate_House_ManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554288727626D9F009460EC /* Corporate_House_ManagementUITests.swift */; };
 		2554288A27626D9F009460EC /* Corporate_House_ManagementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554288927626D9F009460EC /* Corporate_House_ManagementUITestsLaunchTests.swift */; };
+		2554289727627AD5009460EC /* ListingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289627627AD5009460EC /* ListingsVC.swift */; };
+		2554289927627B67009460EC /* PropertyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289827627B67009460EC /* PropertyListVC.swift */; };
+		2554289B27627BA2009460EC /* JanitorHoursVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289A27627BA2009460EC /* JanitorHoursVC.swift */; };
+		2554289D27627C27009460EC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289C27627C27009460EC /* HomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		2554288327626D9F009460EC /* Corporate-House-ManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Corporate-House-ManagementUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2554288727626D9F009460EC /* Corporate_House_ManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corporate_House_ManagementUITests.swift; sourceTree = "<group>"; };
 		2554288927626D9F009460EC /* Corporate_House_ManagementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corporate_House_ManagementUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2554289627627AD5009460EC /* ListingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsVC.swift; sourceTree = "<group>"; };
+		2554289827627B67009460EC /* PropertyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListVC.swift; sourceTree = "<group>"; };
+		2554289A27627BA2009460EC /* JanitorHoursVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JanitorHoursVC.swift; sourceTree = "<group>"; };
+		2554289C27627C27009460EC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 				2554286627626D9D009460EC /* AppDelegate.swift */,
 				2554286827626D9D009460EC /* SceneDelegate.swift */,
 				2554286A27626D9D009460EC /* ViewController.swift */,
+				2554289C27627C27009460EC /* HomeVC.swift */,
+				2554289627627AD5009460EC /* ListingsVC.swift */,
+				2554289827627B67009460EC /* PropertyListVC.swift */,
+				2554289A27627BA2009460EC /* JanitorHoursVC.swift */,
 				2554286F27626D9F009460EC /* Assets.xcassets */,
 				2554287127626D9F009460EC /* LaunchScreen.storyboard */,
 				2554287427626D9F009460EC /* Info.plist */,
@@ -255,7 +267,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2554286B27626D9D009460EC /* ViewController.swift in Sources */,
+				2554289D27627C27009460EC /* HomeVC.swift in Sources */,
+				2554289727627AD5009460EC /* ListingsVC.swift in Sources */,
+				2554289927627B67009460EC /* PropertyListVC.swift in Sources */,
 				2554286727626D9D009460EC /* AppDelegate.swift in Sources */,
+				2554289B27627BA2009460EC /* JanitorHoursVC.swift in Sources */,
 				2554286927626D9D009460EC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
