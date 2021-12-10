@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  SettingsVC.swift
 //  Corporate-House-Management
 //
 //  Created by Mr Kes on 12/9/21.
@@ -7,16 +7,15 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
-    
+class SettingsVC: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemBrown
         // Do any additional setup after loading the view.
     }
     
-    
-   
+
     /*
     // MARK: - Navigation
 
