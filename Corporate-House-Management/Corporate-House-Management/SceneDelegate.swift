@@ -17,19 +17,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let homeNC = UINavigationController(rootViewController: HomeVC())
-        let janitorHoursNC = UINavigationController(rootViewController: JanitorHoursVC())
+        
         let listingsNC = UINavigationController(rootViewController: ListingsVC())
         let settingsNC = UINavigationController(rootViewController: SettingsVC())
-        let tabbar = UITabBarController()
-        tabbar.viewControllers = [janitorHoursNC, homeNC, listingsNC, settingsNC]
-        
+
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = tabbar
+        window?.rootViewController = createTabbar()
         window?.makeKeyAndVisible()
     }
 
+    
+    func createHomeNC() -> UINavigationController {
+        let homeVC = HomeVC()
+        homeVC.title = "Home"
+        homeVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        
+        return UINavigationController(rootViewController: homeVC)
+    }
+    
+    
+    func createJanitorHoursNC() -> UINavigationController {
+        let janitorHoursVC = JanitorHoursVC()
+        janitorHoursVC.title = "Janitor Hours"
+        janitorHoursVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+        
+        return UINavigationController(rootViewController: janitorHoursVC)
+    }
+    
+    
+    func createTabbar() -> UITabBarController {
+        let tabbar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen
+        tabbar.viewControllers = [createHomeNC(), createJanitorHoursNC()]
+        
+        return tabbar
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
