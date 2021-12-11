@@ -20,6 +20,7 @@
 		2554289B27627BA2009460EC /* JanitorHoursVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289A27627BA2009460EC /* JanitorHoursVC.swift */; };
 		2554289D27627C27009460EC /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289C27627C27009460EC /* HomeVC.swift */; };
 		2554289F27630C01009460EC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289E27630C01009460EC /* SettingsVC.swift */; };
+		255428A2276508C1009460EC /* CHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428A1276508C1009460EC /* CHButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2554289A27627BA2009460EC /* JanitorHoursVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JanitorHoursVC.swift; sourceTree = "<group>"; };
 		2554289C27627C27009460EC /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		2554289E27630C01009460EC /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		255428A1276508C1009460EC /* CHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				2554289627627AD5009460EC /* ListingsVC.swift */,
 				2554289E27630C01009460EC /* SettingsVC.swift */,
 				2554289827627B67009460EC /* PropertyListVC.swift */,
+				255428A1276508C1009460EC /* CHButton.swift */,
 				2554286F27626D9F009460EC /* Assets.xcassets */,
 				2554287127626D9F009460EC /* LaunchScreen.storyboard */,
 				2554287427626D9F009460EC /* Info.plist */,
@@ -276,6 +279,7 @@
 				2554286727626D9D009460EC /* AppDelegate.swift in Sources */,
 				2554289F27630C01009460EC /* SettingsVC.swift in Sources */,
 				2554289B27627BA2009460EC /* JanitorHoursVC.swift in Sources */,
+				255428A2276508C1009460EC /* CHButton.swift in Sources */,
 				2554286927626D9D009460EC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
