@@ -22,6 +22,7 @@
 		2554289F27630C01009460EC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554289E27630C01009460EC /* SettingsVC.swift */; };
 		255428A2276508C1009460EC /* CHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428A1276508C1009460EC /* CHButton.swift */; };
 		255428A427650D9D009460EC /* CHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428A327650D9D009460EC /* CHTextField.swift */; };
+		255428A72766A196009460EC /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428A62766A196009460EC /* TabbarVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2554289E27630C01009460EC /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		255428A1276508C1009460EC /* CHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHButton.swift; sourceTree = "<group>"; };
 		255428A327650D9D009460EC /* CHTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTextField.swift; sourceTree = "<group>"; };
+		255428A62766A196009460EC /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				2554286627626D9D009460EC /* AppDelegate.swift */,
 				2554286827626D9D009460EC /* SceneDelegate.swift */,
 				2554286A27626D9D009460EC /* ViewController.swift */,
+				255428A62766A196009460EC /* TabbarVC.swift */,
 				2554289A27627BA2009460EC /* JanitorHoursVC.swift */,
 				2554289C27627C27009460EC /* HomeVC.swift */,
 				2554289627627AD5009460EC /* ListingsVC.swift */,
@@ -277,6 +280,7 @@
 			files = (
 				255428A427650D9D009460EC /* CHTextField.swift in Sources */,
 				2554286B27626D9D009460EC /* ViewController.swift in Sources */,
+				255428A72766A196009460EC /* TabbarVC.swift in Sources */,
 				2554289D27627C27009460EC /* HomeVC.swift in Sources */,
 				2554289727627AD5009460EC /* ListingsVC.swift in Sources */,
 				2554289927627B67009460EC /* PropertyListVC.swift in Sources */,
