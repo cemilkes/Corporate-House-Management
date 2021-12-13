@@ -13,11 +13,12 @@ class JanitorHoursVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        // System background will adapt dark-light mode
+        view.backgroundColor = .systemBackground
         configureTableView()
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
+    
     
     func configureTableView() {
         view.addSubview(tableView)

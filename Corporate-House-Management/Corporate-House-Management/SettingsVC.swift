@@ -16,6 +16,12 @@ class SettingsVC: UIViewController {
     }
     
 
+    // Use this one on client id/secret - Search Screen UI Programatically - Sean Allen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //navigationController?.isNavigationBarHidden = true
+    }
+    
     /*
     // MARK: - Navigation
 

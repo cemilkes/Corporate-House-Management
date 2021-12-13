@@ -21,7 +21,7 @@ class TabbarVC: UITabBarController {
     // MARK: Helpers
     
     func configureTabbarVC() {
-        viewControllers = [createHomeNC(), createJanitorHoursNC()]
+        viewControllers = [createHomeNC(), createJanitorHoursNC(), createCredentialsNC()]
         tabBar.tintColor = .purple
     }
     
@@ -41,9 +41,17 @@ class TabbarVC: UITabBarController {
         janitorHoursVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
         
         return UINavigationController(rootViewController: janitorHoursVC)
-        
     }
     
+    
+    func createCredentialsNC() -> UINavigationController {
+        let credentialsVC = CredentialsVC()
+        credentialsVC.title = "Credentials"
+        let credentialNC = UINavigationController(rootViewController: credentialsVC)
+        credentialsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
+        
+        return credentialNC
+    }
     
 //    func createTabbar() -> UITabBarController {
 //        let tabbar = UITabBarController()
