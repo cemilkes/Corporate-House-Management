@@ -7,12 +7,16 @@
 
 import UIKit
 
-class CredentialsVC: UIViewController {
+class CredentialsVC: UIViewController, UITextFieldDelegate {
 
     let credentialsImageView    = UIImageView()
     let clientIdTextField       = CHTextField()
     let clientSecretTextField   = CHTextField()
     let credentialsActionButton = CHButton(backgroundColor: .systemBlue, title: "Get Listings")
+    
+    var credentialsEntered: Bool {
+        return (!clientIdTextField.text!.isEmpty && !clientSecretTextField.text!.isEmpty)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +25,16 @@ class CredentialsVC: UIViewController {
         configureClientIdTextField()
         configureClientSecretTextField()
         configureCredentialsActionButton()
+        createDismissKeyboardTapGesture()
         // Do any additional setup after loading the view.
     }
 
+    
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
     
     func configureCredentialsImageView() {
         view.addSubview(credentialsImageView)
@@ -41,6 +52,8 @@ class CredentialsVC: UIViewController {
     
     func configureClientIdTextField() {
         view.addSubview(clientIdTextField)
+        clientIdTextField.delegate      = self
+        clientIdTextField.returnKeyType = .next
         
         NSLayoutConstraint.activate([
             clientIdTextField.topAnchor.constraint(equalTo: credentialsImageView.bottomAnchor, constant: 48),
@@ -53,6 +66,8 @@ class CredentialsVC: UIViewController {
     
     func configureClientSecretTextField() {
         view.addSubview(clientSecretTextField)
+        clientSecretTextField.delegate  = self
+        clientIdTextField.returnKeyType = .go
         
         NSLayoutConstraint.activate([
             clientSecretTextField.topAnchor.constraint(equalTo: clientIdTextField.bottomAnchor, constant: 24),
@@ -65,7 +80,7 @@ class CredentialsVC: UIViewController {
     
     func configureCredentialsActionButton() {
         view.addSubview(credentialsActionButton)
-        
+        credentialsActionButton.addTarget(self, action: #selector(pushCredentialsDetailVC), for: .touchUpInside)
         NSLayoutConstraint.activate([
             credentialsActionButton.topAnchor.constraint(equalTo: clientSecretTextField.bottomAnchor, constant: 48),
             credentialsActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -74,4 +89,32 @@ class CredentialsVC: UIViewController {
         ])
     }
     
+    
+    @objc func pushCredentialsDetailVC() {
+        
+        guard credentialsEntered else {
+            print("Please enter credentials")
+            return
+        }
+        
+        let credentialsDetailVC         = CredentialsDetailVC()
+        credentialsDetailVC.clientId    = clientIdTextField.text ?? ""
+        credentialsDetailVC.title       = clientIdTextField.text ?? ""
+        navigationController?.pushViewController(credentialsDetailVC, animated: true)
+    }
+    
+}
+
+extension CredentialsVC: UITextViewDelegate {
+    // THis acts when you pressed the "Return" button
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField == clientIdTextField) {
+            print("id tapped")
+        }else if(textField == clientSecretTextField) {
+            pushCredentialsDetailVC()
+            print("secret tapped")
+        }
+        
+        return true
+    }
 }
