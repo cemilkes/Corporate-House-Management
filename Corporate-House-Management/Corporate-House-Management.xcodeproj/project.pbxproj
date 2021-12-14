@@ -26,6 +26,7 @@
 		255428AA2767EB7E009460EC /* CredentialsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428A92767EB7E009460EC /* CredentialsVC.swift */; };
 		255428AC276941BB009460EC /* CredentialsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428AB276941BB009460EC /* CredentialsDetailVC.swift */; };
 		255428B027694928009460EC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428AF27694928009460EC /* String+Extension.swift */; };
+		255428B227694B63009460EC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428B127694B63009460EC /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		255428A92767EB7E009460EC /* CredentialsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsVC.swift; sourceTree = "<group>"; };
 		255428AB276941BB009460EC /* CredentialsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsDetailVC.swift; sourceTree = "<group>"; };
 		255428AF27694928009460EC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		255428B127694B63009460EC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				255428A1276508C1009460EC /* CHButton.swift */,
 				255428A327650D9D009460EC /* CHTextField.swift */,
 				255428AF27694928009460EC /* String+Extension.swift */,
+				255428B127694B63009460EC /* UIView+Extension.swift */,
 				2554286F27626D9F009460EC /* Assets.xcassets */,
 				2554287127626D9F009460EC /* LaunchScreen.storyboard */,
 				2554287427626D9F009460EC /* Info.plist */,
@@ -290,6 +293,7 @@
 				255428A427650D9D009460EC /* CHTextField.swift in Sources */,
 				255428AA2767EB7E009460EC /* CredentialsVC.swift in Sources */,
 				2554286B27626D9D009460EC /* ViewController.swift in Sources */,
+				255428B227694B63009460EC /* UIView+Extension.swift in Sources */,
 				255428A72766A196009460EC /* TabbarVC.swift in Sources */,
 				2554289D27627C27009460EC /* HomeVC.swift in Sources */,
 				2554289727627AD5009460EC /* ListingsVC.swift in Sources */,
