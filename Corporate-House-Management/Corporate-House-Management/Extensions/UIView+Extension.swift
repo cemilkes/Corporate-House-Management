@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    
+     
     func applyShadow(cornerRadius: CGFloat) {
         layer.cornerRadius      = cornerRadius
         layer.masksToBounds     = true

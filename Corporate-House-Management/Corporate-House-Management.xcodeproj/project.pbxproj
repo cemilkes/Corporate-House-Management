@@ -121,23 +121,11 @@
 		2554286527626D9D009460EC /* Corporate-House-Management */ = {
 			isa = PBXGroup;
 			children = (
-				2554286627626D9D009460EC /* AppDelegate.swift */,
-				2554286827626D9D009460EC /* SceneDelegate.swift */,
-				2554286A27626D9D009460EC /* ViewController.swift */,
-				255428A62766A196009460EC /* TabbarVC.swift */,
-				2554289A27627BA2009460EC /* JanitorHoursVC.swift */,
-				2554289C27627C27009460EC /* HomeVC.swift */,
-				2554289627627AD5009460EC /* ListingsVC.swift */,
-				2554289E27630C01009460EC /* SettingsVC.swift */,
-				2554289827627B67009460EC /* PropertyListVC.swift */,
-				255428A92767EB7E009460EC /* CredentialsVC.swift */,
-				255428AB276941BB009460EC /* CredentialsDetailVC.swift */,
-				255428A1276508C1009460EC /* CHButton.swift */,
-				255428A327650D9D009460EC /* CHTextField.swift */,
-				255428AF27694928009460EC /* String+Extension.swift */,
-				255428B127694B63009460EC /* UIView+Extension.swift */,
-				2554286F27626D9F009460EC /* Assets.xcassets */,
-				2554287127626D9F009460EC /* LaunchScreen.storyboard */,
+				255428BA276A956E009460EC /* Delegates */,
+				255428BC276A958D009460EC /* Views */,
+				255428B9276A9558009460EC /* Controllers */,
+				255428BB276A957D009460EC /* Extensions */,
+				255428BD276A95A7009460EC /* Support */,
 				2554287427626D9F009460EC /* Info.plist */,
 			);
 			path = "Corporate-House-Management";
@@ -158,6 +146,106 @@
 				2554288927626D9F009460EC /* Corporate_House_ManagementUITestsLaunchTests.swift */,
 			);
 			path = "Corporate-House-ManagementUITests";
+			sourceTree = "<group>";
+		};
+		255428B9276A9558009460EC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				255428A62766A196009460EC /* TabbarVC.swift */,
+				2554286A27626D9D009460EC /* ViewController.swift */,
+				255428BE276A9607009460EC /* Home */,
+				255428C2276A962F009460EC /* JanitorHours */,
+				255428C1276A9626009460EC /* Settings */,
+				255428C3276A966F009460EC /* Profile */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		255428BA276A956E009460EC /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2554286627626D9D009460EC /* AppDelegate.swift */,
+				2554286827626D9D009460EC /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		255428BB276A957D009460EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				255428AF27694928009460EC /* String+Extension.swift */,
+				255428B127694B63009460EC /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		255428BC276A958D009460EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				255428A1276508C1009460EC /* CHButton.swift */,
+				255428A327650D9D009460EC /* CHTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		255428BD276A95A7009460EC /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				2554286F27626D9F009460EC /* Assets.xcassets */,
+				2554287127626D9F009460EC /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		255428BE276A9607009460EC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2554289C27627C27009460EC /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		255428BF276A960C009460EC /* Listings */ = {
+			isa = PBXGroup;
+			children = (
+				2554289627627AD5009460EC /* ListingsVC.swift */,
+			);
+			path = Listings;
+			sourceTree = "<group>";
+		};
+		255428C0276A961B009460EC /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				2554289827627B67009460EC /* PropertyListVC.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		255428C1276A9626009460EC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2554289E27630C01009460EC /* SettingsVC.swift */,
+				255428BF276A960C009460EC /* Listings */,
+				255428C0276A961B009460EC /* Properties */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		255428C2276A962F009460EC /* JanitorHours */ = {
+			isa = PBXGroup;
+			children = (
+				2554289A27627BA2009460EC /* JanitorHoursVC.swift */,
+			);
+			path = JanitorHours;
+			sourceTree = "<group>";
+		};
+		255428C3276A966F009460EC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				255428A92767EB7E009460EC /* CredentialsVC.swift */,
+				255428AB276941BB009460EC /* CredentialsDetailVC.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
