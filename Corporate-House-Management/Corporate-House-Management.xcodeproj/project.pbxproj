@@ -29,6 +29,7 @@
 		255428B227694B63009460EC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255428B127694B63009460EC /* UIView+Extension.swift */; };
 		25573FFC276E838700F37AD8 /* CHAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFB276E838700F37AD8 /* CHAlertViewController.swift */; };
 		25573FFE276E83A300F37AD8 /* CHTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */; };
+		25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		255428B127694B63009460EC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		25573FFB276E838700F37AD8 /* CHAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAlertViewController.swift; sourceTree = "<group>"; };
 		25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTitleLabel.swift; sourceTree = "<group>"; };
+		25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBodyLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				255428A327650D9D009460EC /* CHTextField.swift */,
 				25573FFB276E838700F37AD8 /* CHAlertViewController.swift */,
 				25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */,
+				25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				2554286B27626D9D009460EC /* ViewController.swift in Sources */,
 				255428B227694B63009460EC /* UIView+Extension.swift in Sources */,
 				255428A72766A196009460EC /* TabbarVC.swift in Sources */,
+				25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */,
 				2554289D27627C27009460EC /* HomeVC.swift in Sources */,
 				2554289727627AD5009460EC /* ListingsVC.swift in Sources */,
 				255428AC276941BB009460EC /* CredentialsDetailVC.swift in Sources */,
