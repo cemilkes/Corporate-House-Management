@@ -30,7 +30,7 @@
 		25573FFC276E838700F37AD8 /* CHAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFB276E838700F37AD8 /* CHAlertVC.swift */; };
 		25573FFE276E83A300F37AD8 /* CHTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */; };
 		25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */; };
-		25574002276ED82500F37AD8 /* UIViewContoller+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25574001276ED82500F37AD8 /* UIViewContoller+Ext.swift */; };
+		25574004276ED85400F37AD8 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25574003276ED85400F37AD8 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,7 @@
 		25573FFB276E838700F37AD8 /* CHAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHAlertVC.swift; sourceTree = "<group>"; };
 		25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTitleLabel.swift; sourceTree = "<group>"; };
 		25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBodyLabel.swift; sourceTree = "<group>"; };
-		25574001276ED82500F37AD8 /* UIViewContoller+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+Ext.swift"; sourceTree = "<group>"; };
+		25574003276ED85400F37AD8 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +183,7 @@
 			children = (
 				255428AF27694928009460EC /* String+Extension.swift */,
 				255428B127694B63009460EC /* UIView+Extension.swift */,
-				25574001276ED82500F37AD8 /* UIViewContoller+Ext.swift */,
+				25574003276ED85400F37AD8 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25574004276ED85400F37AD8 /* UIViewController+Ext.swift in Sources */,
 				255428A427650D9D009460EC /* CHTextField.swift in Sources */,
 				255428AA2767EB7E009460EC /* CredentialsVC.swift in Sources */,
 				2554286B27626D9D009460EC /* ViewController.swift in Sources */,
@@ -398,7 +399,6 @@
 				25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */,
 				2554289D27627C27009460EC /* HomeVC.swift in Sources */,
 				2554289727627AD5009460EC /* ListingsVC.swift in Sources */,
-				25574002276ED82500F37AD8 /* UIViewContoller+Ext.swift in Sources */,
 				255428AC276941BB009460EC /* CredentialsDetailVC.swift in Sources */,
 				25573FFC276E838700F37AD8 /* CHAlertVC.swift in Sources */,
 				2554289927627B67009460EC /* PropertyListVC.swift in Sources */,

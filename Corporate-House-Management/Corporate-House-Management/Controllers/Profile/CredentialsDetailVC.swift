@@ -10,6 +10,7 @@ import UIKit
 class CredentialsDetailVC: UIViewController {
 
     var clientId: String!
+    var clientSecret: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

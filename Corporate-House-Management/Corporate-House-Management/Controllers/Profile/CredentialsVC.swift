@@ -94,12 +94,16 @@ class CredentialsVC: UIViewController, UITextFieldDelegate {
         
         guard credentialsEntered else {
             print("Please enter credentials")
+            presentCHAlertOnMainThread(title: "Empty Credentials",
+                                       message: "Please enter the crendetials",
+                                       buttonTitle: "Ok")
             return
         }
         
-        let credentialsDetailVC         = CredentialsDetailVC()
-        credentialsDetailVC.clientId    = clientIdTextField.text ?? ""
-        credentialsDetailVC.title       = clientIdTextField.text ?? ""
+        let credentialsDetailVC             = CredentialsDetailVC()
+        credentialsDetailVC.clientId        = clientIdTextField.text ?? ""
+        credentialsDetailVC.clientSecret    = clientSecretTextField.text ?? ""
+        credentialsDetailVC.title           = "Credentials"
         navigationController?.pushViewController(credentialsDetailVC, animated: true)
     }
     

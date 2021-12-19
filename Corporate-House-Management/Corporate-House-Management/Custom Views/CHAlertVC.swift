@@ -58,8 +58,8 @@ class CHAlertVC: UIViewController {
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 280),
-            containerView.widthAnchor.constraint(equalToConstant: 220)
+            containerView.heightAnchor.constraint(equalToConstant: 220),
+            containerView.widthAnchor.constraint(equalToConstant: 280)
         ])
     }
     
