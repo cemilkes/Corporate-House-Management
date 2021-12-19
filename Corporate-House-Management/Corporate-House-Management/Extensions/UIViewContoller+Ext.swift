@@ -1,5 +1,5 @@
 //
-//  CHAlertViewController.swift
+//  UIViewContoller+Ext.swift
 //  Corporate-House-Management
 //
 //  Created by Mr Kes on 12/18/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CHAlertViewController: UIViewController {
+class UIViewContoller_Ext: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
