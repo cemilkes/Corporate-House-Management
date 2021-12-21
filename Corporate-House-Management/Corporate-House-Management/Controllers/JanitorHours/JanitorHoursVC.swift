@@ -8,8 +8,10 @@
 import UIKit
 
 class JanitorHoursVC: UIViewController {
+    
     let tableView = UITableView()
     var characters = ["Link", "Zelda", "Ganondorf", "Midna"]
+    let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add new service")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,7 @@ class JanitorHoursVC: UIViewController {
         view.backgroundColor = .systemBackground
         configureTableView()
         tableView.dataSource = self
+        configureFloatingButton()
     }
     
     
@@ -30,18 +33,31 @@ class JanitorHoursVC: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
+    
+    func configureFloatingButton() {
+        view.addSubview(floatingButton)
+        NSLayoutConstraint.activate([
+            floatingButton.heightAnchor.constraint(equalToConstant: 44),
+            floatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            floatingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
 
 }
 
 extension JanitorHoursVC: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return characters.count
-  }
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.textLabel?.text = characters[indexPath.row]
-    return cell
-  }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return characters.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = characters[indexPath.row]
+        return cell
+    }
 }
 
 

@@ -7,6 +7,18 @@
 
 import Foundation
 
+struct MonthlyData {
+    var monthlytotal: Double
+    let dailyData: [DailyData]
+}
+
+
+struct DailyData {
+    var dailyTotal: Double
+    let services: [Service]
+}
+
+
 struct Service {
     let id: String
     let service: String
@@ -17,5 +29,4 @@ struct Service {
     let createdAt: String
     let lastEditAt: Date
     let editedBy: Date
-    
 }

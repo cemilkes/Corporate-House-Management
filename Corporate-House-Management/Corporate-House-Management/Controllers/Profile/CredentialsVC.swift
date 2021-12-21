@@ -28,7 +28,7 @@ class CredentialsVC: UIViewController, UITextFieldDelegate {
         createDismissKeyboardTapGesture()
         // Do any additional setup after loading the view.
     }
-
+    
     
     func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))

@@ -32,6 +32,7 @@
 		25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */; };
 		25574004276ED85400F37AD8 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25574003276ED85400F37AD8 /* UIViewController+Ext.swift */; };
 		2557400F27714E4800F37AD8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557400E27714E4800F37AD8 /* Service.swift */; };
+		2557401127718FC200F37AD8 /* AddNewServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557401027718FC200F37AD8 /* AddNewServiceVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBodyLabel.swift; sourceTree = "<group>"; };
 		25574003276ED85400F37AD8 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		2557400E27714E4800F37AD8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		2557401027718FC200F37AD8 /* AddNewServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewServiceVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				2554289A27627BA2009460EC /* JanitorHoursVC.swift */,
+				2557401027718FC200F37AD8 /* AddNewServiceVC.swift */,
 			);
 			path = JanitorHours;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2557401127718FC200F37AD8 /* AddNewServiceVC.swift in Sources */,
 				25574004276ED85400F37AD8 /* UIViewController+Ext.swift in Sources */,
 				255428A427650D9D009460EC /* CHTextField.swift in Sources */,
 				255428AA2767EB7E009460EC /* CredentialsVC.swift in Sources */,
