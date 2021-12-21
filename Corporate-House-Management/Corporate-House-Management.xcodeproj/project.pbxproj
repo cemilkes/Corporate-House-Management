@@ -31,6 +31,7 @@
 		25573FFE276E83A300F37AD8 /* CHTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */; };
 		25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */; };
 		25574004276ED85400F37AD8 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25574003276ED85400F37AD8 /* UIViewController+Ext.swift */; };
+		2557400F27714E4800F37AD8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557400E27714E4800F37AD8 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		25573FFD276E83A300F37AD8 /* CHTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHTitleLabel.swift; sourceTree = "<group>"; };
 		25573FFF276EB05900F37AD8 /* CHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHBodyLabel.swift; sourceTree = "<group>"; };
 		25574003276ED85400F37AD8 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		2557400E27714E4800F37AD8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				255428BA276A956E009460EC /* Delegates */,
+				2557400D27714E3500F37AD8 /* Models */,
 				255428BC276A958D009460EC /* Custom Views */,
 				255428B9276A9558009460EC /* Controllers */,
 				255428BB276A957D009460EC /* Extensions */,
@@ -258,6 +261,14 @@
 				255428AB276941BB009460EC /* CredentialsDetailVC.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2557400D27714E3500F37AD8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2557400E27714E4800F37AD8 /* Service.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +418,7 @@
 				2554289F27630C01009460EC /* SettingsVC.swift in Sources */,
 				2554289B27627BA2009460EC /* JanitorHoursVC.swift in Sources */,
 				25573FFE276E83A300F37AD8 /* CHTitleLabel.swift in Sources */,
+				2557400F27714E4800F37AD8 /* Service.swift in Sources */,
 				255428A2276508C1009460EC /* CHButton.swift in Sources */,
 				2554286927626D9D009460EC /* SceneDelegate.swift in Sources */,
 			);
