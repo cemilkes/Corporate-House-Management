@@ -20,12 +20,15 @@ class ReservationAPI {
   
     let mayProperties: String = PropertyData.shared.getMayPropertiesNames()
     
-    func getReservations(startDate: String, endDate: String, host:String, completion: @escaping (Reservation?, String?) -> Void ) {
+    func getReservations(startDate: String, endDate: String, host:String, page: Int, completion: @escaping (Reservation?, CHError?) -> Void ) {
         // dateformat YYYY-MM-DD
         
-        let endPoint = AppConstants.baseURL + "calendar/reservations?\(host)&include=guest&start_date=\(startDate)&end_date=\(endDate)"
+        let endPoint = AppConstants.baseURL + "calendar/reservations?\(host)&include=guest&start_date=\(startDate)&end_date=\(endDate)" + "&per_page=10&page=\(page)"
         
-        let url = URL(string: endPoint)!
+        guard let url = URL(string: endPoint) else {
+            completion(nil, .invalidCredentials)
+            return
+        }
         
         let token = UserDefaults.standard.value(forKey: "m_token") as? String ?? "notoken"
         print("NS user default token: \(token)")
@@ -40,12 +43,12 @@ class ReservationAPI {
             
             if let _ = error {
                 print(error!.localizedDescription)
-                completion(nil, "Check internet connection")
+                completion(nil, .unableToComplete)
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(nil, "Invalid request")
+                completion(nil, .invalidResponse)
                 return 
             }
             
@@ -56,10 +59,10 @@ class ReservationAPI {
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 let reservations = try jsonDecoder.decode(Reservation.self, from: data)
                 completion(reservations, nil)
-                print(reservations)
+                //print(reservations)
             }catch {
-                completion(nil, "Error occured")
-                print(error.localizedDescription)
+                completion(nil, .invalidData)
+                //print(error.localizedDescription)
             }
             
         }.resume()

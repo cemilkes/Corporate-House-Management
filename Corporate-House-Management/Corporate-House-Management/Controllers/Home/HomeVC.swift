@@ -37,7 +37,7 @@ class HomeVC: UIViewController {
 //        delayWithSeconds(3) {
 //            ReservationAPI.shared. { reservation, errorMessage in
 //                guard let reservation = reservation else {
-//                    print(errorMessage!)
+//                    print(errorMessage!.rawValue)
 //                    return
 //                }
 //                for i in reservation.data {

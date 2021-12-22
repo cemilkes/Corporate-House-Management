@@ -24,15 +24,16 @@ class CHButton: UIButton {
     init(backgroundColor: UIColor, title: String) {
         super.init(frame: .zero)
         self.backgroundColor = backgroundColor
-        //self.titleLabel?.text = title
-        self.setTitle(title, for: .normal)
+        //self.titleLabel?.text = title  // read (get)
+        self.setTitle(title, for: .normal) // write (set)
         configure()
     }
     
     
     private func configure() {
         layer.cornerRadius      = 10
-        titleLabel?.textColor   = .white
+        //titleLabel?.textColor   = .white // (get)
+        setTitleColor(.white, for: .normal) // (set)
         titleLabel?.font        = UIFont.preferredFont(forTextStyle: .headline)
         translatesAutoresizingMaskIntoConstraints = false
     }
