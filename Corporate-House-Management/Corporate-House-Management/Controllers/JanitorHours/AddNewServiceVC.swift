@@ -14,9 +14,9 @@ class AddNewServiceVC: UIViewController {
     let titleLabel       = CHTitleLabel(textAlignment: .center, fontSize: 30)
     let dateTextField    = CHTextField(placeholder: "Choose the date")
     let serviceTextField = CHTextField(placeholder: "Choose the service")
-    let feeTextField     = CHTextField(frame: .zero)
+    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 16)
     let pickerView       = UIPickerView()
-    
+    let datePickerView   = UIDatePicker()
     let services = ["208", "212", "215", "218"]
     
     let dates    = ["1", "2", "3", "4", "5"]
@@ -28,12 +28,19 @@ class AddNewServiceVC: UIViewController {
         configureNavigationView()
         configureDismissButton()
         configureTitleLabel()
-        configureServiceTextField()
         configureDateTextField()
+        configureFeeLabel()
+        configureServiceTextField()
         configurePickerView()
+        //configureDatePicker()
     }
 
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureDatePicker()
+    }
+    
     func configureNavigationView() {
         view.addSubview(navigationView)
         navigationView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,26 +88,13 @@ class AddNewServiceVC: UIViewController {
     }
     
     
-    func configureServiceTextField() {
-        view.addSubview(serviceTextField)
-        let padding: CGFloat = 15
-        
-        NSLayoutConstraint.activate([
-            serviceTextField.topAnchor.constraint(equalTo: navigationView.bottomAnchor, constant: padding),
-            serviceTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            serviceTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            serviceTextField.heightAnchor.constraint(equalToConstant: 44)
-        ])
-        
-    }
-    
     
     func configureDateTextField() {
         view.addSubview(dateTextField)
         let padding: CGFloat = 15
         
         NSLayoutConstraint.activate([
-            dateTextField.topAnchor.constraint(equalTo: serviceTextField.bottomAnchor, constant: padding),
+            dateTextField.topAnchor.constraint(equalTo: navigationView.bottomAnchor, constant: padding),
             dateTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dateTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             dateTextField.heightAnchor.constraint(equalToConstant: 44)
@@ -108,12 +102,37 @@ class AddNewServiceVC: UIViewController {
     }
     
     
+    func configureFeeLabel() {
+        view.addSubview(feeLabel)
+        let padding: CGFloat = 15
+        
+        NSLayoutConstraint.activate([
+            feeLabel.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: padding),
+            feeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            feeLabel.heightAnchor.constraint(equalToConstant: 44),
+            feeLabel.widthAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    
+    func configureServiceTextField() {
+        view.addSubview(serviceTextField)
+        let padding: CGFloat = 15
+        
+        NSLayoutConstraint.activate([
+            serviceTextField.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: padding),
+            serviceTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            serviceTextField.trailingAnchor.constraint(equalTo: feeLabel.leadingAnchor, constant: -padding),
+            serviceTextField.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        
+    }
+    
+
     func configurePickerView() {
         pickerView.delegate         = self
         pickerView.dataSource       = self
         serviceTextField.inputView  = pickerView
-        dateTextField.inputView     = pickerView
-        
     }
     
     
@@ -121,40 +140,54 @@ class AddNewServiceVC: UIViewController {
         dismiss(animated: true)
     }
     
+    
+    func configureDatePicker() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+        toolBar.setItems([doneButton], animated: true)
+        
+        dateTextField.inputAccessoryView        = toolBar
+        dateTextField.inputView                 = datePickerView
+        datePickerView.preferredDatePickerStyle = .wheels
+        datePickerView.datePickerMode           = .date
+        datePickerView.date                     = Date()
+        datePickerView.locale                   = .current
+    }
+    
+    
+    @objc func doneButtonPressed() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        dateTextField.text  = formatter.string(from: datePickerView.date)
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if serviceTextField.isFirstResponder {
-            return services.count
-        }else if dateTextField.isFirstResponder {
-            return dates.count
-        }
-        return 1
+        
+        return services.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if serviceTextField.isFirstResponder {
-            return services[row]
-        }else if dateTextField.isFirstResponder {
-            return dates[row]
-        }
-        return "title"
+        
+        return services[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if serviceTextField.isFirstResponder {
-            serviceTextField.text = services[row]
-            serviceTextField.resignFirstResponder()
-            print(Dictionaries.shared.unitNumberToCleaningFee[services[row]] ?? "0")
-        }else if dateTextField.isFirstResponder {
-            dateTextField.text = dates[row]
-            serviceTextField.resignFirstResponder()
-        }
+        
+        serviceTextField.text = services[row]
+        feeLabel.text = "$" + (Dictionaries.shared.unitNumberToCleaningFee[services[row]] ?? "0")
+        serviceTextField.resignFirstResponder()
+        
     }
     
 }

@@ -44,6 +44,11 @@ class ReservationAPI {
                 return
             }
             
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(nil, "Invalid request")
+                return 
+            }
+            
             guard let data = data else { return }
             //print(String(data: data, encoding: .utf8) ?? "Invalid JSON")
             do {
