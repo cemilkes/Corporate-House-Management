@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum CHError: String {
+//Added Error protocol for Result type Failure result type
+enum CHError: String, Error {
     case invalidCredentials     = "Invalid Credentials."
     case unableToComplete       = "Unable to complete your request. Please check your internet connection."
     case invalidResponse        = "Invalid response from the server. Please try again."

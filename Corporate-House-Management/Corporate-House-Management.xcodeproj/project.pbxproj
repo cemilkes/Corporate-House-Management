@@ -40,6 +40,8 @@
 		2557401C27725AF900F37AD8 /* CHDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557401B27725AF900F37AD8 /* CHDictionaries.swift */; };
 		2557401E27729EFA00F37AD8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557401D27729EFA00F37AD8 /* AppConstants.swift */; };
 		255740252773CC9D00F37AD8 /* CHErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740242773CC9D00F37AD8 /* CHErrorMessage.swift */; };
+		255740272773DEA400F37AD8 /* ListingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740262773DEA400F37AD8 /* ListingsAPI.swift */; };
+		2557402A2773E38700F37AD8 /* Listings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740292773E38700F37AD8 /* Listings.swift */; };
 		87E3FD107B98E5CE5CFB49C8 /* Pods_Corporate_House_Management_Corporate_House_ManagementUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A620098BA7278CDAA98C22E0 /* Pods_Corporate_House_Management_Corporate_House_ManagementUITests.framework */; };
 		EFB1D9236D6C9D23A95C33F5 /* Pods_Corporate_House_Management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +101,8 @@
 		2557401D27729EFA00F37AD8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		255740232773A00900F37AD8 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		255740242773CC9D00F37AD8 /* CHErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHErrorMessage.swift; sourceTree = "<group>"; };
+		255740262773DEA400F37AD8 /* ListingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsAPI.swift; sourceTree = "<group>"; };
+		255740292773E38700F37AD8 /* Listings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listings.swift; sourceTree = "<group>"; };
 		275978B0FF72FE65F75E99AC /* Pods-Corporate-House-ManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-ManagementTests.debug.xcconfig"; path = "Target Support Files/Pods-Corporate-House-ManagementTests/Pods-Corporate-House-ManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2AF4DF499146BE8685103A45 /* Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; path = "Target Support Files/Pods-Corporate-House-Management-Corporate-House-ManagementUITests/Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corporate_House_Management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +185,7 @@
 				255428B9276A9558009460EC /* Controllers */,
 				25574012277232C300F37AD8 /* Managers */,
 				255428BB276A957D009460EC /* Extensions */,
+				255740282773E21B00F37AD8 /* Utilities */,
 				255428BD276A95A7009460EC /* Support */,
 				2554287427626D9F009460EC /* Info.plist */,
 			);
@@ -250,7 +255,6 @@
 		255428BD276A95A7009460EC /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				255740242773CC9D00F37AD8 /* CHErrorMessage.swift */,
 				2557401D27729EFA00F37AD8 /* AppConstants.swift */,
 				2554286F27626D9F009460EC /* Assets.xcassets */,
 				2554287127626D9F009460EC /* LaunchScreen.storyboard */,
@@ -315,6 +319,7 @@
 			children = (
 				25574019277249D400F37AD8 /* Reservations.swift */,
 				2557400E27714E4800F37AD8 /* Service.swift */,
+				255740292773E38700F37AD8 /* Listings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				255740152772468A00F37AD8 /* ReservationAPI.swift */,
+				255740262773DEA400F37AD8 /* ListingsAPI.swift */,
 			);
 			path = NetworkManagers;
 			sourceTree = "<group>";
@@ -351,6 +357,14 @@
 				2557401B27725AF900F37AD8 /* CHDictionaries.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		255740282773E21B00F37AD8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				255740242773CC9D00F37AD8 /* CHErrorMessage.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		3797F85CA3733A74C145CDAC /* Pods */ = {
@@ -608,6 +622,7 @@
 				2557401127718FC200F37AD8 /* AddNewServiceVC.swift in Sources */,
 				25574004276ED85400F37AD8 /* UIViewController+Ext.swift in Sources */,
 				255428A427650D9D009460EC /* CHTextField.swift in Sources */,
+				2557402A2773E38700F37AD8 /* Listings.swift in Sources */,
 				255428AA2767EB7E009460EC /* CredentialsVC.swift in Sources */,
 				255428B227694B63009460EC /* UIView+Extension.swift in Sources */,
 				255428A72766A196009460EC /* TabbarVC.swift in Sources */,
@@ -627,6 +642,7 @@
 				2554289F27630C01009460EC /* SettingsVC.swift in Sources */,
 				2554289B27627BA2009460EC /* JanitorHoursVC.swift in Sources */,
 				25573FFE276E83A300F37AD8 /* CHTitleLabel.swift in Sources */,
+				255740272773DEA400F37AD8 /* ListingsAPI.swift in Sources */,
 				255740182772497F00F37AD8 /* PropertyData.swift in Sources */,
 				2557400F27714E4800F37AD8 /* Service.swift in Sources */,
 				255428A2276508C1009460EC /* CHButton.swift in Sources */,

@@ -13,17 +13,25 @@ class ListingsVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan
         // Do any additional setup after loading the view.
+        
+        TokenService.shared.requestToken(client_id: "",
+                                         client_secret: "", userDefaultKey: "m_listings")
+        
+        delayWithSeconds(3.0) {
+            ListingsAPI.shared.getListings(for: "",
+                                           clientSecret: "",
+                                           hostUserDefault: "m_listings", page: 1) { result in
+                
+                switch result {
+                    
+                case .success(let listings):
+                    print(listings)
+                case .failure(let error):
+                    print(error.rawValue)
+                }
+                
+            }
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

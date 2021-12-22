@@ -10,17 +10,23 @@ class ReservationAPI {
     
     // API CALLS:
     
-    // regular way - reservations, listings, listings by id (also diffable collection view)
+    //Reservations -> Used NSURLSession, regular tableView Data Loading(not diffable datasource)
     
-    // using Alamofire - requesting token, calendar api
+    //Listings -> call function with Result type and diffable datasoure on collectionView (For May side and For Angel side)
+    //Listings Id -> detail VC
     
-    // using Combine and also use combine for tableview exc. (properties,  properties by Id)
+    //Calendar -> get Calendar api from Listings page - Alamofire get request and regular collection view (maybe both table and collection view)
+    
+    //Request token -> Alamofire
+    
+    //Properties -> use Combine for calling networking and populating tableView
+    //Properties by ID -> populate detail VC
     
     static let shared = ReservationAPI()
   
     let mayProperties: String = PropertyData.shared.getMayPropertiesNames()
     
-    func getReservations(startDate: String, endDate: String, host:String, page: Int, completion: @escaping (Reservation?, CHError?) -> Void ) {
+    func getReservations(with startDate: String, endDate: String, host:String, page: Int, completion: @escaping (Reservation?, CHError?) -> Void ) {
         // dateformat YYYY-MM-DD
         
         let endPoint = AppConstants.baseURL + "calendar/reservations?\(host)&include=guest&start_date=\(startDate)&end_date=\(endDate)" + "&per_page=10&page=\(page)"
