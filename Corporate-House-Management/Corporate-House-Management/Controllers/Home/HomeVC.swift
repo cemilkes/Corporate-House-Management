@@ -14,17 +14,26 @@ class HomeVC: UIViewController {
         view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
     }
+  
     
-    
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getReservations() {
+        let client_id = ""
+        let client_secret = ""
+        
+        TokenService.shared.requestToken(client_id: client_id, client_secret: client_secret, userDefaultKey: "m_token")
+//        delayWithSeconds(3) {
+//            ReservationAPI.shared. { reservation, errorMessage in
+//                guard let reservation = reservation else {
+//                    print(errorMessage!)
+//                    return
+//                }
+//                for i in reservation.data {
+//                    let listingId = i.listingId
+//                    let unitId:String = Dictionaries.shared.listingIdToUnitName[listingId] ?? "no found"
+//                    print("Unit id \(unitId) " + "\(i.checkIn)" + "\(i._included[0].data.firstName)")
+//                }
+//            }
+//        }
     }
-    */
-
+    
 }

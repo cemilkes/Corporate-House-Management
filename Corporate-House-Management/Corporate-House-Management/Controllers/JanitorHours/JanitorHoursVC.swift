@@ -11,15 +11,17 @@ class JanitorHoursVC: UIViewController {
     
     let tableView = UITableView()
     var characters = ["Link", "Zelda", "Ganondorf", "Midna"]
-    let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add new service")
+    let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // System background will adapt dark-light mode
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
         configureTableView()
         tableView.dataSource = self
         configureFloatingButton()
+    
     }
     
     
@@ -36,6 +38,7 @@ class JanitorHoursVC: UIViewController {
     
     func configureFloatingButton() {
         view.addSubview(floatingButton)
+        floatingButton.addTarget(self, action: #selector(pushAddNewServiceVC), for: .touchUpInside)
         NSLayoutConstraint.activate([
             floatingButton.heightAnchor.constraint(equalToConstant: 44),
             floatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -44,6 +47,12 @@ class JanitorHoursVC: UIViewController {
         ])
     }
 
+    
+    @objc func pushAddNewServiceVC() {
+        let addNewServiceVC = AddNewServiceVC()
+        addNewServiceVC.modalPresentationStyle = .overFullScreen
+        present(addNewServiceVC, animated: true, completion: nil)
+    }
 }
 
 extension JanitorHoursVC: UITableViewDataSource {

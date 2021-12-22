@@ -21,7 +21,7 @@ class TabbarVC: UITabBarController {
     // MARK: Helpers
     
     func configureTabbarVC() {
-        viewControllers = [createHomeNC(), createJanitorHoursNC(), createCredentialsNC()]
+        viewControllers = [createJanitorHoursNC(), createHomeNC(), createCredentialsNC()]
         tabBar.tintColor = .purple
     }
     
@@ -29,7 +29,7 @@ class TabbarVC: UITabBarController {
     func createHomeNC() -> UINavigationController {
         let homeVC = HomeVC()
         homeVC.title = "Home"
-        homeVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        homeVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
         
         return UINavigationController(rootViewController: homeVC)
     }
@@ -37,8 +37,8 @@ class TabbarVC: UITabBarController {
     
     func createJanitorHoursNC() -> UINavigationController {
         let janitorHoursVC = JanitorHoursVC()
-        janitorHoursVC.title = "Janitor Hours"
-        janitorHoursVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+        janitorHoursVC.title = "Cleaning Hours"
+        janitorHoursVC.tabBarItem = UITabBarItem(title: "Cleaning Hours", image: UIImage(systemName: "bed.double"), tag: 0)
         
         return UINavigationController(rootViewController: janitorHoursVC)
     }

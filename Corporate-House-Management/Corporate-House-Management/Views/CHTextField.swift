@@ -20,6 +20,12 @@ class CHTextField: UITextField {
     }
     
     
+    init(placeholder:String) {
+        super.init(frame: .zero)
+        self.placeholder = placeholder
+    }
+    
+    
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -37,7 +43,7 @@ class CHTextField: UITextField {
         backgroundColor             = .tertiarySystemBackground
         autocorrectionType          = .no
         //returnKeyType               = .go
-        placeholder                 = "Enter a username"
+        //placeholder                 = "Enter a username"
         
     }
     
