@@ -23,6 +23,7 @@ class CHTextField: UITextField {
     init(placeholder:String) {
         super.init(frame: .zero)
         self.placeholder = placeholder
+        configure()
     }
     
     
