@@ -96,6 +96,7 @@
 		25574019277249D400F37AD8 /* Reservations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservations.swift; sourceTree = "<group>"; };
 		2557401B27725AF900F37AD8 /* CHDictionaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHDictionaries.swift; sourceTree = "<group>"; };
 		2557401D27729EFA00F37AD8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		255740232773A00900F37AD8 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		275978B0FF72FE65F75E99AC /* Pods-Corporate-House-ManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-ManagementTests.debug.xcconfig"; path = "Target Support Files/Pods-Corporate-House-ManagementTests/Pods-Corporate-House-ManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2AF4DF499146BE8685103A45 /* Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; path = "Target Support Files/Pods-Corporate-House-Management-Corporate-House-ManagementUITests/Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corporate_House_Management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +149,7 @@
 		2554285A27626D9D009460EC = {
 			isa = PBXGroup;
 			children = (
+				255740232773A00900F37AD8 /* Config.xcconfig */,
 				2554286527626D9D009460EC /* Corporate-House-Management */,
 				2554287C27626D9F009460EC /* Corporate-House-ManagementTests */,
 				2554288627626D9F009460EC /* Corporate-House-ManagementUITests */,
@@ -674,6 +676,7 @@
 /* Begin XCBuildConfiguration section */
 		2554288B27626D9F009460EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 255740232773A00900F37AD8 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -735,6 +738,7 @@
 		};
 		2554288C27626D9F009460EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 255740232773A00900F37AD8 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

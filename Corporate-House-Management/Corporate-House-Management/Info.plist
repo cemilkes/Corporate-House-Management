@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID_A</key>
+	<string>$(CLIENT_ID_A)</string>
+	<key>CLIENT_ID_M</key>
+	<string>$(CLIENT_ID_M)</string>
+	<key>CLIENT_SECRET_A</key>
+	<string>$(CLIENT_SECRET_A)</string>
+	<key>CLIENT_SECRET_M</key>
+	<string>$(CLIENT_SECRET_M)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

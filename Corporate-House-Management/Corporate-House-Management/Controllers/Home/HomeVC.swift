@@ -13,6 +13,19 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
+        
+        guard let client_id_a = Bundle.main.infoDictionary?["CLIENT_ID_A"] as? String,
+              let client_id_m = Bundle.main.infoDictionary?["CLIENT_ID_M"] as? String,
+              let client_server_a = Bundle.main.infoDictionary?["CLIENT_SECRET_A"] as? String,
+              let client_server_m = Bundle.main.infoDictionary?["CLIENT_SECRET_M"] as? String else {
+                  return
+        }
+        
+        print(client_id_a)
+        print(client_id_m)
+        print(client_server_a)
+        print(client_server_m)
+        
     }
   
     
