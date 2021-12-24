@@ -18,6 +18,12 @@ class ServiceData {
                     "314", "316", "401", "402", "403",
                     "405", "406", "407", "409", "410",
                     "411", "412", "413", "414", "415", "416",
+                    "Vacuum(Hallways)",
+                    "Lobby&Bathroom",
+                    "Courtyard Bathroom"
+                    //"Jose-Labor"
+                    //"Shopping"
+                    //"Power Wash(Garage)"
     ]
     
     

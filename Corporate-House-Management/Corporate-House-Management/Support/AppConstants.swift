@@ -11,9 +11,10 @@ struct AppConstants {
     
     static let baseURL = "https://api.hospitable.com/"
     
-    static let cleaningFee1B1B = "60"
-    static let cleaningFee2B2B = "80"
-    static let cleaningFee3B3B = "100"
-    
-    
+    static let cleaningFee1B1B      = "60"
+    static let cleaningFee2B2B      = "80"
+    static let cleaningFee3B3B      = "100"
+    static let hallwaysVacuumFee    = "40"
+    static let lobbyAndBathroomFee    = "40"
+    static let courtyardBathroomFee = "20"
 }

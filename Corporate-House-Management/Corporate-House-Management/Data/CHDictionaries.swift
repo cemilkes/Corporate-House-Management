@@ -109,7 +109,7 @@ class Dictionaries {
     ]
     
     
-    var unitNumberToCleaningFee: [String: String] = [
+    var unitNumberToServiceFee: [String: String] = [
         
         "208" : AppConstants.cleaningFee2B2B,
         "209" : AppConstants.cleaningFee1B1B,
@@ -139,9 +139,17 @@ class Dictionaries {
         "414" : AppConstants.cleaningFee2B2B,
         "415" : AppConstants.cleaningFee2B2B,
         "416" : AppConstants.cleaningFee1B1B,
+        
+        "Vacuum(Hallways)"   : AppConstants.hallwaysVacuumFee,
+        "Lobby&Bathroom"     : AppConstants.lobbyAndBathroomFee,
+        "Courtyard Bathroom" : AppConstants.courtyardBathroomFee,
     ]
     
 }
+
+//        "Jose-Labor": ""
+//        "Power Wash(Garage)":
+//        "Shopping":
 
 /*
  631100 - 212

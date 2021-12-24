@@ -11,10 +11,10 @@ class AddNewServiceVC: UIViewController {
 
     let navigationView   = UIView(frame: .zero)
     let dismissButton    = CHButton(backgroundColor: .systemRed, title: "X")
-    let titleLabel       = CHTitleLabel(textAlignment: .center, fontSize: 30)
+    let titleLabel       = CHTitleLabel(textAlignment: .center, fontSize: 24)
     let dateTextField    = CHTextField(placeholder: "Choose the date")
     let serviceTextField = CHTextField(placeholder: "Choose the service")
-    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 24)
+    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 20)
     let pickerView       = UIPickerView()
     let datePickerView   = UIDatePicker()
     
@@ -38,10 +38,11 @@ class AddNewServiceVC: UIViewController {
         configureDatePicker()
     }
     
+    
     func configureNavigationView() {
         view.addSubview(navigationView)
         navigationView.translatesAutoresizingMaskIntoConstraints = false
-        navigationView.backgroundColor = .systemYellow
+        navigationView.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
             navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
@@ -70,7 +71,9 @@ class AddNewServiceVC: UIViewController {
     
     func configureTitleLabel() {
         navigationView.addSubview(titleLabel)
-        titleLabel.backgroundColor = .systemBlue
+        titleLabel.backgroundColor  = .systemBackground
+        titleLabel.text             = "Add New Service"
+        
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
@@ -83,7 +86,6 @@ class AddNewServiceVC: UIViewController {
     func configureScrollView() {
         
     }
-    
     
     
     func configureDateTextField() {
@@ -182,7 +184,7 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         serviceTextField.text = ServiceData.shared.services[row]
-        feeLabel.text = "$" + (Dictionaries.shared.unitNumberToCleaningFee[ServiceData.shared.services[row]] ?? "0")
+        feeLabel.text = "$" + (Dictionaries.shared.unitNumberToServiceFee[ServiceData.shared.services[row]] ?? "0")
         serviceTextField.resignFirstResponder()
         
     }
