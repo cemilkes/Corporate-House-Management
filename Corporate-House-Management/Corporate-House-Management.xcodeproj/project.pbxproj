@@ -42,6 +42,7 @@
 		255740252773CC9D00F37AD8 /* CHErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740242773CC9D00F37AD8 /* CHErrorMessage.swift */; };
 		255740272773DEA400F37AD8 /* ListingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740262773DEA400F37AD8 /* ListingsAPI.swift */; };
 		2557402A2773E38700F37AD8 /* Listings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740292773E38700F37AD8 /* Listings.swift */; };
+		2557402C27762A6C00F37AD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */; };
 		87E3FD107B98E5CE5CFB49C8 /* Pods_Corporate_House_Management_Corporate_House_ManagementUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A620098BA7278CDAA98C22E0 /* Pods_Corporate_House_Management_Corporate_House_ManagementUITests.framework */; };
 		EFB1D9236D6C9D23A95C33F5 /* Pods_Corporate_House_Management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		255740242773CC9D00F37AD8 /* CHErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHErrorMessage.swift; sourceTree = "<group>"; };
 		255740262773DEA400F37AD8 /* ListingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsAPI.swift; sourceTree = "<group>"; };
 		255740292773E38700F37AD8 /* Listings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listings.swift; sourceTree = "<group>"; };
+		2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		275978B0FF72FE65F75E99AC /* Pods-Corporate-House-ManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-ManagementTests.debug.xcconfig"; path = "Target Support Files/Pods-Corporate-House-ManagementTests/Pods-Corporate-House-ManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2AF4DF499146BE8685103A45 /* Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; path = "Target Support Files/Pods-Corporate-House-Management-Corporate-House-ManagementUITests/Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corporate_House_Management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 				255740282773E21B00F37AD8 /* Utilities */,
 				255428BD276A95A7009460EC /* Support */,
 				2554287427626D9F009460EC /* Info.plist */,
+				2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */,
 			);
 			path = "Corporate-House-Management";
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 			files = (
 				2554287327626D9F009460EC /* LaunchScreen.storyboard in Resources */,
 				2554287027626D9F009460EC /* Assets.xcassets in Resources */,
+				2557402C27762A6C00F37AD8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

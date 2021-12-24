@@ -19,7 +19,8 @@ class ReservationAPI {
     
     //Request token -> Alamofire
     
-    //Properties -> use Combine for calling networking and populating tableView
+    //Properties -> use Combine for calling networking and populating tableView (check udemy swiftUI - weather part - muhammad azam course)
+    // https://www.youtube.com/watch?v=M2psX-JwHdE&t=3157s
     //Properties by ID -> populate detail VC
     
     static let shared = ReservationAPI()

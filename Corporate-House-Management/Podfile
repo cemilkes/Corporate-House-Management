@@ -7,6 +7,8 @@ target 'Corporate-House-Management' do
 
   # Pods for Corporate-House-Management
 	pod 'Alamofire', '~> 5.5'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
   target 'Corporate-House-ManagementTests' do
     inherit! :search_paths

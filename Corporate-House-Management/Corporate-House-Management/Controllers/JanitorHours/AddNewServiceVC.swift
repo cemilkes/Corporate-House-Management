@@ -14,7 +14,7 @@ class AddNewServiceVC: UIViewController {
     let titleLabel       = CHTitleLabel(textAlignment: .center, fontSize: 30)
     let dateTextField    = CHTextField(placeholder: "Choose the date")
     let serviceTextField = CHTextField(placeholder: "Choose the service")
-    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 16)
+    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 24)
     let pickerView       = UIPickerView()
     let datePickerView   = UIDatePicker()
     let services = ["208", "212", "215", "218"]
