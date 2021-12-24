@@ -43,6 +43,7 @@
 		255740272773DEA400F37AD8 /* ListingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740262773DEA400F37AD8 /* ListingsAPI.swift */; };
 		2557402A2773E38700F37AD8 /* Listings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740292773E38700F37AD8 /* Listings.swift */; };
 		2557402C27762A6C00F37AD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */; };
+		2557402E27762FBB00F37AD8 /* ServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557402D27762FBB00F37AD8 /* ServiceData.swift */; };
 		87E3FD107B98E5CE5CFB49C8 /* Pods_Corporate_House_Management_Corporate_House_ManagementUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A620098BA7278CDAA98C22E0 /* Pods_Corporate_House_Management_Corporate_House_ManagementUITests.framework */; };
 		EFB1D9236D6C9D23A95C33F5 /* Pods_Corporate_House_Management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		255740262773DEA400F37AD8 /* ListingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsAPI.swift; sourceTree = "<group>"; };
 		255740292773E38700F37AD8 /* Listings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listings.swift; sourceTree = "<group>"; };
 		2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2557402D27762FBB00F37AD8 /* ServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceData.swift; sourceTree = "<group>"; };
 		275978B0FF72FE65F75E99AC /* Pods-Corporate-House-ManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-ManagementTests.debug.xcconfig"; path = "Target Support Files/Pods-Corporate-House-ManagementTests/Pods-Corporate-House-ManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2AF4DF499146BE8685103A45 /* Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; path = "Target Support Files/Pods-Corporate-House-Management-Corporate-House-ManagementUITests/Pods-Corporate-House-Management-Corporate-House-ManagementUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2DE2A2A617216AB777E4D585 /* Pods_Corporate_House_Management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Corporate_House_Management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				255740172772497F00F37AD8 /* PropertyData.swift */,
+				2557402D27762FBB00F37AD8 /* ServiceData.swift */,
 				2557401B27725AF900F37AD8 /* CHDictionaries.swift */,
 			);
 			path = Data;
@@ -633,6 +636,7 @@
 				25574000276EB05900F37AD8 /* CHBodyLabel.swift in Sources */,
 				2554289D27627C27009460EC /* HomeVC.swift in Sources */,
 				2554289727627AD5009460EC /* ListingsVC.swift in Sources */,
+				2557402E27762FBB00F37AD8 /* ServiceData.swift in Sources */,
 				255428AC276941BB009460EC /* CredentialsDetailVC.swift in Sources */,
 				255740142772467E00F37AD8 /* TokenManager.swift in Sources */,
 				25573FFC276E838700F37AD8 /* CHAlertVC.swift in Sources */,

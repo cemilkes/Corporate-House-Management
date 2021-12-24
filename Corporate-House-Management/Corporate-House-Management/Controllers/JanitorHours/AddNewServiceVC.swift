@@ -17,9 +17,6 @@ class AddNewServiceVC: UIViewController {
     let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 24)
     let pickerView       = UIPickerView()
     let datePickerView   = UIDatePicker()
-    let services = ["208", "212", "215", "218"]
-    
-    let dates    = ["1", "2", "3", "4", "5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,18 +171,18 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return services.count
+        return ServiceData.shared.services.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return services[row]
+        return ServiceData.shared.services[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        serviceTextField.text = services[row]
-        feeLabel.text = "$" + (Dictionaries.shared.unitNumberToCleaningFee[services[row]] ?? "0")
+        serviceTextField.text = ServiceData.shared.services[row]
+        feeLabel.text = "$" + (Dictionaries.shared.unitNumberToCleaningFee[ServiceData.shared.services[row]] ?? "0")
         serviceTextField.resignFirstResponder()
         
     }
