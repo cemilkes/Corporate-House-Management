@@ -20,13 +20,20 @@ struct DailyData {
 
 
 struct Service {
-    let id: String
+  //  let id: String
+    let date: String
     let service: String
-    let fee: Double
-    let additionalNote: String?
-    let receiptImageLink: String?
-    let serviceDate: String
-    let createdAt: String
-    let lastEditAt: Date
-    let editedBy: Date
+    let fee: String
+//    let additionalNote: String?
+//    let receiptImageLink: String?
+
+//    let createdAt: String
+//    let lastEditAt: Date
+//    let editedBy: Date
+    
+    init(_dictionary: NSDictionary) {
+        date = _dictionary["date"] as! String
+        service = _dictionary["service"] as! String
+        fee = _dictionary["fee"] as! String
+    }
 }

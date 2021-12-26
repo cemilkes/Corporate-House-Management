@@ -7,12 +7,14 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseDatabase
 
 class JanitorHoursVC: UIViewController {
     
     let tableView = UITableView()
     var characters = ["Link", "Zelda", "Ganondorf", "Midna"]
     let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
+    var services: [Service] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +24,13 @@ class JanitorHoursVC: UIViewController {
         configureTableView()
         tableView.dataSource = self
         configureFloatingButton()
+
+        DatabaseReference().database.reference().child("Janitor Hours").observe(DataEventType.value) { snapshot in
+            print(snapshot.value)
+        }
         
-
-        Firestore.firestore().collection("Janitor Hours")
-            .document(Date().getCalendarYear())
-            .collection(Date().getCalendarMonth())
-            .document(Date().getCalendarDate())
-            .collection("Services")
-            .getDocuments { snapshot, error in
-                print(snapshot?.documents.first?.data())
-            }
-
     }
-    
+
     
     func configureTableView() {
         view.addSubview(tableView)
@@ -68,8 +64,12 @@ class JanitorHoursVC: UIViewController {
 
 extension JanitorHoursVC: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return services.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return services.count
     }
     
     

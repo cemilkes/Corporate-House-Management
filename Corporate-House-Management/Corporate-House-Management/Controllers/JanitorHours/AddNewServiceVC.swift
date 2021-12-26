@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseDatabase
 
 class AddNewServiceVC: UIViewController {
     
@@ -22,7 +23,7 @@ class AddNewServiceVC: UIViewController {
     let saveButton       = CHButton(backgroundColor: .systemGreen, title: "Save")
     let dismissButton    = CHButton(backgroundColor: .systemRed, title: "Cancel")
     let padding: CGFloat = 15.0
-    
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,18 +150,26 @@ class AddNewServiceVC: UIViewController {
         
       
         let data: [String:Any] = ["date": dateTextField.text!,
-                                  "unit": serviceTextField.text!,
+                                  "service": serviceTextField.text!,
                                   "fee":  feeLabel.text!
                                 ]
+        
 
-        Firestore.firestore().collection("Janitor Hours")
-            .document(Date().getCalendarYear())
-            .collection(Date().getCalendarMonth())
-            .document("\(dateTextField.text!)")
-            .collection("Services")
-            .document("\(serviceTextField.text!)")
-            .setData(data)
-            
+        ref = Database.database().reference()
+        ref.child("Janitor Hours")
+            .child(Date().getCalendarYear())
+            .child("11")
+            .child("\(dateTextField.text!)")
+            .child("\(serviceTextField.text!)")
+            .setValue(data)
+        
+//        Firestore.firestore().collection("Janitor Hours")
+//            .document(Date().getCalendarYear())
+//            .collection(Date().getCalendarMonth())
+//            .document("\(dateTextField.text!)")
+//            .collection("Services")
+//            .addDocument(data: data)
+
     }
     
     
