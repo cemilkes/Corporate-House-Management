@@ -6,30 +6,38 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class AddNewServiceVC: UIViewController {
-
-    let navigationView   = UIView(frame: .zero)
-    let dismissButton    = CHButton(backgroundColor: .systemRed, title: "X")
-    let titleLabel       = CHTitleLabel(textAlignment: .center, fontSize: 24)
+    
+    let containerView    = UIView(frame: .zero)
+    let titleLabel       = CHTitleLabel(textAlignment: .center, fontSize: 20.0)
     let dateTextField    = CHTextField(placeholder: "Choose the date")
     let serviceTextField = CHTextField(placeholder: "Choose the service")
-    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 20)
+    let feeLabel         = CHTitleLabel(textAlignment: .center, fontSize: 24)
     let pickerView       = UIPickerView()
     let datePickerView   = UIDatePicker()
+    let actionButton     = CHButton(backgroundColor: .systemRed, title: "Ok")
+    let saveButton       = CHButton(backgroundColor: .systemGreen, title: "Save")
+    let dismissButton    = CHButton(backgroundColor: .systemRed, title: "Cancel")
+    let padding: CGFloat = 15.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         // Do any additional setup after loading the view.
-        configureNavigationView()
-        configureDismissButton()
+        configureContainerView()
         configureTitleLabel()
         configureDateTextField()
         configureFeeLabel()
         configureServiceTextField()
         configurePickerView()
-        //configureDatePicker()
+        configureDatePicker()
+        configureSaveButton()
+        configureDismissButton()
+        dateTextField.becomeFirstResponder()
     }
 
 
@@ -39,75 +47,59 @@ class AddNewServiceVC: UIViewController {
     }
     
     
-    func configureNavigationView() {
-        view.addSubview(navigationView)
-        navigationView.translatesAutoresizingMaskIntoConstraints = false
-        navigationView.backgroundColor = .systemBackground
+    func configureContainerView() {
+        view.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = .systemBackground
+
+        containerView.layer.masksToBounds = true
+        containerView.layer.cornerRadius = 16
+        containerView.layer.borderWidth = 2
+        containerView.layer.borderColor = UIColor.systemBackground.cgColor
         
+        //widht height centerX centerY
         NSLayoutConstraint.activate([
-            navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            navigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            navigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            navigationView.heightAnchor.constraint(equalToConstant: 64)
-        ])
-    }
-   
-    
-    func configureDismissButton() {
-        navigationView.addSubview(dismissButton)
-        dismissButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
-        
-        let padding: CGFloat = 8
-        
-        NSLayoutConstraint.activate([
-            dismissButton.topAnchor.constraint(equalTo: navigationView.topAnchor, constant: padding),
-            dismissButton.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: padding),
-            dismissButton.heightAnchor.constraint(equalToConstant: 44),
-            dismissButton.widthAnchor.constraint(equalToConstant: 44)
-        
+            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            containerView.heightAnchor.constraint(equalToConstant: 280),
+            
         ])
     }
     
     
     func configureTitleLabel() {
-        navigationView.addSubview(titleLabel)
+        containerView.addSubview(titleLabel)
         titleLabel.backgroundColor  = .systemBackground
-        titleLabel.text             = "Add New Service"
+        titleLabel.text             = "New Service"
         
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 44),
-            titleLabel.widthAnchor.constraint(equalToConstant: 200)
+            titleLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
+            titleLabel.heightAnchor.constraint(equalToConstant: 44)
+            
         ])
     }
-    
-    
-    func configureScrollView() {
-        
-    }
-    
+
     
     func configureDateTextField() {
-        view.addSubview(dateTextField)
-        let padding: CGFloat = 15
+        containerView.addSubview(dateTextField)
         
         NSLayoutConstraint.activate([
-            dateTextField.topAnchor.constraint(equalTo: navigationView.bottomAnchor, constant: padding),
-            dateTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            dateTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dateTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
+            dateTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            dateTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             dateTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     
     func configureFeeLabel() {
-        view.addSubview(feeLabel)
-        let padding: CGFloat = 15
+        containerView.addSubview(feeLabel)
         
         NSLayoutConstraint.activate([
             feeLabel.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: padding),
-            feeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            feeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             feeLabel.heightAnchor.constraint(equalToConstant: 44),
             feeLabel.widthAnchor.constraint(equalToConstant: 44)
         ])
@@ -115,23 +107,60 @@ class AddNewServiceVC: UIViewController {
     
     
     func configureServiceTextField() {
-        view.addSubview(serviceTextField)
-        let padding: CGFloat = 15
+        containerView.addSubview(serviceTextField)
         
         NSLayoutConstraint.activate([
             serviceTextField.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: padding),
-            serviceTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            serviceTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             serviceTextField.trailingAnchor.constraint(equalTo: feeLabel.leadingAnchor, constant: -padding),
             serviceTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
         
     }
     
+    
+    func configureSaveButton() {
+        containerView.addSubview(saveButton)
+        saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            saveButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+            saveButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            saveButton.widthAnchor.constraint(equalToConstant: 120),
+            saveButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    
+     func configureDismissButton() {
+         containerView.addSubview(dismissButton)
+         dismissButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+         
+         NSLayoutConstraint.activate([
+             dismissButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+             dismissButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+             dismissButton.widthAnchor.constraint(equalToConstant: 120),
+             dismissButton.heightAnchor.constraint(equalToConstant: 44)
+         ])
+     }
+     
+    
+    @objc func saveButtonPressed() {
+        
+      
+        let data: [String:Any] = ["date": dateTextField.text!,
+                                  "unit": serviceTextField.text!,
+                                  "fee":  feeLabel.text!
+                                ]
 
-    func configurePickerView() {
-        pickerView.delegate         = self
-        pickerView.dataSource       = self
-        serviceTextField.inputView  = pickerView
+        Firestore.firestore().collection("Janitor Hours")
+            .document(Date().getCalendarYear())
+            .collection(Date().getCalendarMonth())
+            .document("\(dateTextField.text!)")
+            .collection("Services")
+            .document("\(serviceTextField.text!)")
+            .setData(data)
+            
     }
     
     
@@ -140,8 +169,16 @@ class AddNewServiceVC: UIViewController {
     }
     
     
+    func configurePickerView() {
+        pickerView.delegate         = self
+        pickerView.dataSource       = self
+        serviceTextField.inputView  = pickerView
+    }
+    
+    
     func configureDatePicker() {
         let toolBar = UIToolbar()
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
         toolBar.setItems([doneButton], animated: true)
@@ -157,10 +194,10 @@ class AddNewServiceVC: UIViewController {
     
     @objc func doneButtonPressed() {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
+        formatter.dateFormat = "MMM dd, E"
         dateTextField.text  = formatter.string(from: datePickerView.date)
         self.view.endEditing(true)
+        
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class JanitorHoursVC: UIViewController {
     
@@ -21,7 +22,17 @@ class JanitorHoursVC: UIViewController {
         configureTableView()
         tableView.dataSource = self
         configureFloatingButton()
-    
+        
+
+        Firestore.firestore().collection("Janitor Hours")
+            .document(Date().getCalendarYear())
+            .collection(Date().getCalendarMonth())
+            .document(Date().getCalendarDate())
+            .collection("Services")
+            .getDocuments { snapshot, error in
+                print(snapshot?.documents.first?.data())
+            }
+
     }
     
     

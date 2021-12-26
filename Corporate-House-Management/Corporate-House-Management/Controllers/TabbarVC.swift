@@ -50,7 +50,6 @@ class TabbarVC: UITabBarController {
         listingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 3)
         let listingsNC = UINavigationController(rootViewController: listingsVC)
         
-        
         return listingsNC
     }
     
@@ -60,7 +59,6 @@ class TabbarVC: UITabBarController {
         credentialsVC.title = "Credentials"
         credentialsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
         let credentialNC = UINavigationController(rootViewController: credentialsVC)
-        
         
         return credentialNC
     }

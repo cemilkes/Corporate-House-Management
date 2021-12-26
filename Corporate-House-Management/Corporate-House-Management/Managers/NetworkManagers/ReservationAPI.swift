@@ -10,17 +10,27 @@ class ReservationAPI {
     
     // API CALLS:
     
+    //Diffable Data source(Collection + TableView), Function Call: NSURLSession regular, result type, combine
+    
     //Reservations -> Used NSURLSession, regular tableView Data Loading(not diffable datasource)
     
-    //Listings -> call function with Result type and diffable datasoure on collectionView (For May side and For Angel side)
+    //Listings -> call function with Result type and diffable datasoure on collectionView (For May side)
     //Listings Id -> detail VC
+    
+    //Listings (For Angel side)
+    //Listings By Id
     
     //Calendar -> get Calendar api from Listings page - Alamofire get request and regular collection view (maybe both table and collection view)
     
     //Request token -> Alamofire
     
+    // May
     //Properties -> use Combine for calling networking and populating tableView (check udemy swiftUI - weather part - muhammad azam course)
     // https://www.youtube.com/watch?v=M2psX-JwHdE&t=3157s
+    //Properties by ID -> populate detail VC
+    
+    //Angel
+    //Properties ->
     //Properties by ID -> populate detail VC
     
     static let shared = ReservationAPI()
