@@ -13,7 +13,8 @@ struct Listings: Codable {
 
 struct Listing: Codable {
     
-    let id: String
-    //propertyId
+    let id: String // listingID
+    let rating: Double
+    
     
 }

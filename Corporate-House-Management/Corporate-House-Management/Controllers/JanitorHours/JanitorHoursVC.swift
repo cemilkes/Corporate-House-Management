@@ -14,7 +14,7 @@ class JanitorHoursVC: UIViewController {
     let tableView = UITableView()
     let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
     var services: [Service] = []
-    
+    var serviceDays: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +29,14 @@ class JanitorHoursVC: UIViewController {
     
     
     func getMonthlyServiceData() {
-        Firestore.firestore().collection("Janitor Hours")
-            .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
-            .collection(Date().getCalendarDate())
-            .getDocuments { snapshot, error in
-            print(snapshot?.documents.count)
-        }
-            
-           
+        Firestore.firestore().collection("Janitor Hours") .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+            .collection("Days").getDocuments { (snapshot, error) in
+                
+                guard let snapshot = snapshot else {
+                    return
+                }
+                print(snapshot.documents.count)
+            }
     }
     
     
@@ -73,8 +73,9 @@ class JanitorHoursVC: UIViewController {
 extension JanitorHoursVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return serviceDays.count
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return services.count

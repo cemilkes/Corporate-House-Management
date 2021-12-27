@@ -49,13 +49,6 @@ class AddNewServiceVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureDatePicker()
-
-//        downloadServiceDaysFromFirestore { serviceDays in
-//            print("service Days downloaded \(serviceDays)")
-//        }
-        downloadServiceDaysFromFirestore { serviceDictArray in
-            print(serviceDictArray)
-        }
     }
     
     
@@ -161,33 +154,7 @@ class AddNewServiceVC: UIViewController {
         return NSDictionary(objects: [service.date, service.service, service.fee],
                             forKeys: ["date" as NSCopying, "service" as NSCopying, "fee" as NSCopying])
     }
-    
 
-    private func updateServiceDays(serviceDays: ServiceDays, withValues: [String : Any]) {
-        
-        updateServiceDaysInFirestore(serviceDays, withValues: withValues) { (error) in
-            
-            if error != nil {
-                print("error updating basket", error!.localizedDescription)
-            } else {
-               print("added")
-            }
-        }
-    }
-    
-    
-    func updateServiceDaysInFirestore(_ serviceDays: ServiceDays, withValues: [String:Any], completion: @escaping (_ error: Error?) -> Void){
-        Firestore.firestore().collection("Janitor Hours")
-            .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
-            .collection("Days").whereField("date", isEqualTo: Date().getCalendarDate())
-            
-            
-    }
-
-    func createDictionaryFrom(_ serviceDays: ServiceDays) -> NSDictionary {
-        return NSDictionary(objects: [serviceDays.date, serviceDays.dailyTotal, serviceDays.services],
-                            forKeys: ["date" as NSCopying, "service" as NSCopying, "services" as NSCopying])
-    }
     
     func downloadServiceDaysFromFirestore(completion: @escaping (_ serviceDictArray: Array<Dictionary<String, Any>>)-> Void) {
 
@@ -207,25 +174,9 @@ class AddNewServiceVC: UIViewController {
                 }else{
                     completion([])
                 }
-                
         }
     }
-    
-    
-    func updateServiceData(serviceArray: Array<Dictionary<String,Any>>) {
-        let newService = Service(date: dateTextField.text!,
-                              service: serviceTextField.text!,
-                              fee: feeLabel.text!)
-        let serviceDict = serviceDictionaryFrom(newService)
-        
-        let data: [String:Any] = [
-            "date": dateTextField.text!,
-            "dailyTotal": 100.0,
-            "services": serviceArray
-        ]
 
-    }
-    
     
     func addNewServiceData(){
         let service = Service(date: dateTextField.text!,
@@ -250,10 +201,9 @@ class AddNewServiceVC: UIViewController {
     }
     
     
-    
-    
     @objc func saveButtonPressed() {
         var serviceArray: Array<Dictionary<String,Any>> = []
+        
         downloadServiceDaysFromFirestore { serviceDictArray in
             if serviceDictArray.isEmpty {
                 self.addNewServiceData()
@@ -291,20 +241,7 @@ class AddNewServiceVC: UIViewController {
     
     
     func configureDatePicker() {
-       /*
-        let toolBar = UIToolbar()
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
-        toolBar.setItems([doneButton], animated: true)
-        
-        dateTextField.inputAccessoryView        = toolBar
-        dateTextField.inputView                 = datePickerView
-        datePickerView.preferredDatePickerStyle = .wheels
-        datePickerView.datePickerMode           = .date
-        datePickerView.date                     = Date()
-        datePickerView.locale                   = .current
-        */
+     
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, E"
         dateTextField.text = formatter.string(from: Date())
@@ -317,6 +254,23 @@ class AddNewServiceVC: UIViewController {
         formatter.dateFormat = "MMM dd, E"
         dateTextField.text  = formatter.string(from: datePickerView.date)
         self.view.endEditing(true)
+    }
+    
+    
+    func configureToolBar() {
+        
+         let toolBar = UIToolbar()
+         toolBar.translatesAutoresizingMaskIntoConstraints = false
+         toolBar.sizeToFit()
+         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+         toolBar.setItems([doneButton], animated: true)
+         
+         dateTextField.inputAccessoryView        = toolBar
+         dateTextField.inputView                 = datePickerView
+         datePickerView.preferredDatePickerStyle = .wheels
+         datePickerView.datePickerMode           = .date
+         datePickerView.date                     = Date()
+         datePickerView.locale                   = .current
     }
     
 }
