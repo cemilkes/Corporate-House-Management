@@ -23,7 +23,10 @@ class AddNewServiceVC: UIViewController {
     let saveButton       = CHButton(backgroundColor: .systemGreen, title: "Save")
     let dismissButton    = CHButton(backgroundColor: .systemRed, title: "Cancel")
     let padding: CGFloat = 15.0
+    var dailyTotal: Double = 0
+    var serviceArray: [Service] = []
     var ref: DatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +41,21 @@ class AddNewServiceVC: UIViewController {
         configureDatePicker()
         configureSaveButton()
         configureDismissButton()
-        dateTextField.becomeFirstResponder()
+        //dateTextField.becomeFirstResponder()
+        serviceTextField.becomeFirstResponder()
     }
 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureDatePicker()
+
+//        downloadServiceDaysFromFirestore { serviceDays in
+//            print("service Days downloaded \(serviceDays)")
+//        }
+        downloadServiceDaysFromFirestore { serviceDictArray in
+            print(serviceDictArray)
+        }
     }
     
     
@@ -144,32 +155,126 @@ class AddNewServiceVC: UIViewController {
              dismissButton.heightAnchor.constraint(equalToConstant: 44)
          ])
      }
-     
+ 
+
+    func serviceDictionaryFrom(_ service: Service) -> NSDictionary {
+        return NSDictionary(objects: [service.date, service.service, service.fee],
+                            forKeys: ["date" as NSCopying, "service" as NSCopying, "fee" as NSCopying])
+    }
+    
+
+    private func updateServiceDays(serviceDays: ServiceDays, withValues: [String : Any]) {
+        
+        updateServiceDaysInFirestore(serviceDays, withValues: withValues) { (error) in
+            
+            if error != nil {
+                print("error updating basket", error!.localizedDescription)
+            } else {
+               print("added")
+            }
+        }
+    }
+    
+    
+    func updateServiceDaysInFirestore(_ serviceDays: ServiceDays, withValues: [String:Any], completion: @escaping (_ error: Error?) -> Void){
+        Firestore.firestore().collection("Janitor Hours")
+            .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+            .collection("Days").whereField("date", isEqualTo: Date().getCalendarDate())
+            
+            
+    }
+
+    func createDictionaryFrom(_ serviceDays: ServiceDays) -> NSDictionary {
+        return NSDictionary(objects: [serviceDays.date, serviceDays.dailyTotal, serviceDays.services],
+                            forKeys: ["date" as NSCopying, "service" as NSCopying, "services" as NSCopying])
+    }
+    
+    func downloadServiceDaysFromFirestore(completion: @escaping (_ serviceDictArray: Array<Dictionary<String, Any>>)-> Void) {
+
+        Firestore.firestore().collection("Janitor Hours") .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+            .collection("Days").document(Date().getCalendarDate()).getDocument { (snapshot, error) in
+
+            guard let snapshot = snapshot else {
+                print("no data")
+                completion([])
+                return
+            }
+  
+                //print(snapshot.data()?["services"])
+                if let services = snapshot.data()?["services"] as? Array<Dictionary<String,Any>> {
+                    let serviceDictArray = services
+                    completion(serviceDictArray)
+                }else{
+                    completion([])
+                }
+                
+        }
+    }
+    
+    
+    func updateServiceData(serviceArray: Array<Dictionary<String,Any>>) {
+        let newService = Service(date: dateTextField.text!,
+                              service: serviceTextField.text!,
+                              fee: feeLabel.text!)
+        let serviceDict = serviceDictionaryFrom(newService)
+        
+        let data: [String:Any] = [
+            "date": dateTextField.text!,
+            "dailyTotal": 100.0,
+            "services": serviceArray
+        ]
+
+    }
+    
+    
+    func addNewServiceData(){
+        let service = Service(date: dateTextField.text!,
+                              service: serviceTextField.text!,
+                              fee: feeLabel.text!)
+        let serviceDict = serviceDictionaryFrom(service)
+        
+        
+        var serviceArray: [NSDictionary] = []
+        serviceArray.append(serviceDict)
+        
+        let data: [String:Any] = [
+            "date": dateTextField.text!,
+            "dailyTotal": 100.0,
+            "services": serviceArray
+        ]
+        
+        Firestore.firestore().collection("Janitor Hours")
+            .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+            .collection("Days")
+            .document(Date().getCalendarDate()).setData(data)
+    }
+    
+    
+    
     
     @objc func saveButtonPressed() {
-        
-      
-        let data: [String:Any] = ["date": dateTextField.text!,
-                                  "service": serviceTextField.text!,
-                                  "fee":  feeLabel.text!
-                                ]
-        
-
-        ref = Database.database().reference()
-        ref.child("Janitor Hours")
-            .child(Date().getCalendarYear())
-            .child("11")
-            .child("\(dateTextField.text!)")
-            .child("\(serviceTextField.text!)")
-            .setValue(data)
-        
-//        Firestore.firestore().collection("Janitor Hours")
-//            .document(Date().getCalendarYear())
-//            .collection(Date().getCalendarMonth())
-//            .document("\(dateTextField.text!)")
-//            .collection("Services")
-//            .addDocument(data: data)
-
+        var serviceArray: Array<Dictionary<String,Any>> = []
+        downloadServiceDaysFromFirestore { serviceDictArray in
+            if serviceDictArray.isEmpty {
+                self.addNewServiceData()
+            }else {
+                let newService = Service(date: self.dateTextField.text!,
+                                         service: self.serviceTextField.text!,
+                                         fee: self.feeLabel.text!)
+                let serviceDict = self.serviceDictionaryFrom(newService)
+                serviceArray = serviceDictArray
+                serviceArray.append(serviceDict as! Dictionary<String, Any>)
+                let data: [String:Any] = [
+                    "date": self.dateTextField.text!,
+                    "dailyTotal": 100.0,
+                    "services": serviceArray
+                ]
+                Firestore.firestore().collection("Janitor Hours")
+                    .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+                    .collection("Days")
+                    .document(Date().getCalendarDate()).setData(data)
+            }
+        }
     }
     
     
@@ -186,6 +291,7 @@ class AddNewServiceVC: UIViewController {
     
     
     func configureDatePicker() {
+       /*
         let toolBar = UIToolbar()
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         toolBar.sizeToFit()
@@ -198,6 +304,11 @@ class AddNewServiceVC: UIViewController {
         datePickerView.datePickerMode           = .date
         datePickerView.date                     = Date()
         datePickerView.locale                   = .current
+        */
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, E"
+        dateTextField.text = formatter.string(from: Date())
+        dateTextField.isEnabled = false
     }
     
     
@@ -206,7 +317,6 @@ class AddNewServiceVC: UIViewController {
         formatter.dateFormat = "MMM dd, E"
         dateTextField.text  = formatter.string(from: datePickerView.date)
         self.view.endEditing(true)
-        
     }
     
 }

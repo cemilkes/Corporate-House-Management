@@ -12,9 +12,9 @@ import FirebaseDatabase
 class JanitorHoursVC: UIViewController {
     
     let tableView = UITableView()
-    var characters = ["Link", "Zelda", "Ganondorf", "Midna"]
     let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
     var services: [Service] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,21 @@ class JanitorHoursVC: UIViewController {
         configureTableView()
         tableView.dataSource = self
         configureFloatingButton()
-
-        DatabaseReference().database.reference().child("Janitor Hours").observe(DataEventType.value) { snapshot in
-            print(snapshot.value)
-        }
-        
+        getMonthlyServiceData()
     }
-
+    
+    
+    func getMonthlyServiceData() {
+        Firestore.firestore().collection("Janitor Hours")
+            .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+            .collection(Date().getCalendarDate())
+            .getDocuments { snapshot, error in
+            print(snapshot?.documents.count)
+        }
+            
+           
+    }
+    
     
     func configureTableView() {
         view.addSubview(tableView)
@@ -65,7 +73,7 @@ class JanitorHoursVC: UIViewController {
 extension JanitorHoursVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return services.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +83,7 @@ extension JanitorHoursVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = characters[indexPath.row]
+        cell.textLabel?.text = ""
         return cell
     }
 }

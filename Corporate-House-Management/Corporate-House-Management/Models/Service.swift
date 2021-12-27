@@ -7,23 +7,31 @@
 
 import Foundation
 
-struct MonthlyData {
-    var monthlytotal: Double
-    let dailyData: [DailyData]
-}
 
-
-struct DailyData {
-    var dailyTotal: Double
-    let services: [Service]
-}
-
-
-struct Service {
-  //  let id: String
+struct MonthlyData: Codable {
     let date: String
-    let service: String
-    let fee: String
+    var monthlytotal: Double
+    let dailyData: [ServiceDays]
+}
+
+struct ServiceDays: Codable {
+    var date: String
+    var dailyTotal: Double
+    var services: [Service]
+    
+//        init(_dictionary: NSDictionary) {
+//            date = _dictionary["date"] as! String
+//            dailyTotal = _dictionary["dailyTotal"] as! Double
+//            services = _dictionary["services"] as! [Service]
+//        }
+    
+}
+
+struct Service: Codable {
+  //  let id: String
+    var date: String
+    var service: String
+    var fee: String
 //    let additionalNote: String?
 //    let receiptImageLink: String?
 
@@ -31,9 +39,9 @@ struct Service {
 //    let lastEditAt: Date
 //    let editedBy: Date
     
-    init(_dictionary: NSDictionary) {
-        date = _dictionary["date"] as! String
-        service = _dictionary["service"] as! String
-        fee = _dictionary["fee"] as! String
-    }
+//    init(_dictionary: NSDictionary) {
+//        date = _dictionary["date"] as! String
+//        service = _dictionary["service"] as! String
+//        fee = _dictionary["fee"] as! String
+//    }
 }
