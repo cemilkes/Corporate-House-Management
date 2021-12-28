@@ -156,23 +156,28 @@ class AddNewServiceVC: UIViewController {
     }
 
     
-    func downloadServiceDaysFromFirestore(completion: @escaping (_ serviceDictArray: Array<Dictionary<String, Any>>)-> Void) {
+//    func getDailyTotal(completion: @escaping ) {
+//
+//    }
+    
+    
+    func downloadServiceDaysFromFirestore(completion: @escaping (_ serviceDictArray: Array<Dictionary<String, Any>>, _ dailyTotal: Double)-> Void) {
 
         Firestore.firestore().collection("Janitor Hours") .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
             .collection("Days").document(Date().getCalendarDate()).getDocument { (snapshot, error) in
 
             guard let snapshot = snapshot else {
                 print("no data")
-                completion([])
+                completion([], 0.0)
                 return
             }
   
-                //print(snapshot.data()?["services"])
+                //print(snapshot.data())
                 if let services = snapshot.data()?["services"] as? Array<Dictionary<String,Any>> {
                     let serviceDictArray = services
-                    completion(serviceDictArray)
+                    completion(serviceDictArray, snapshot.data()!["dailyTotal"] as! Double)
                 }else{
-                    completion([])
+                    completion([], 0.0)
                 }
         }
     }
@@ -183,14 +188,14 @@ class AddNewServiceVC: UIViewController {
                               service: serviceTextField.text!,
                               fee: feeLabel.text!)
         let serviceDict = serviceDictionaryFrom(service)
-        
+        let dailyTotal = Double(feeLabel.text!)
         
         var serviceArray: [NSDictionary] = []
         serviceArray.append(serviceDict)
         
         let data: [String:Any] = [
             "date": dateTextField.text!,
-            "dailyTotal": 100.0,
+            "dailyTotal": dailyTotal!,
             "services": serviceArray
         ]
         
@@ -204,7 +209,7 @@ class AddNewServiceVC: UIViewController {
     @objc func saveButtonPressed() {
         var serviceArray: Array<Dictionary<String,Any>> = []
         
-        downloadServiceDaysFromFirestore { serviceDictArray in
+        downloadServiceDaysFromFirestore { serviceDictArray, dailyTotal in
             if serviceDictArray.isEmpty {
                 self.addNewServiceData()
             }else {
@@ -214,11 +219,15 @@ class AddNewServiceVC: UIViewController {
                 let serviceDict = self.serviceDictionaryFrom(newService)
                 serviceArray = serviceDictArray
                 serviceArray.append(serviceDict as! Dictionary<String, Any>)
+                var newDailyTotal = dailyTotal
+                newDailyTotal = newDailyTotal + (Double(self.feeLabel.text!) ?? 0.0)
+                
                 let data: [String:Any] = [
                     "date": self.dateTextField.text!,
-                    "dailyTotal": 100.0,
+                    "dailyTotal": newDailyTotal,
                     "services": serviceArray
                 ]
+                
                 Firestore.firestore().collection("Janitor Hours")
                     .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
                     .collection("Days")
@@ -294,7 +303,7 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         serviceTextField.text = ServiceData.shared.services[row]
-        feeLabel.text = "$" + (Dictionaries.shared.unitNumberToServiceFee[ServiceData.shared.services[row]] ?? "0")
+        feeLabel.text = (Dictionaries.shared.unitNumberToServiceFee[ServiceData.shared.services[row]] ?? "0")
         serviceTextField.resignFirstResponder()
         
     }

@@ -9,7 +9,7 @@ import UIKit
 
 class UnitImageView: UIImageView {
 
-    let placeholderImage = UIImage(named: "")
+    let placeholderImage = UIImage(named: "unit-placeholder.jpg")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

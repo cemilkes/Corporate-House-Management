@@ -14,7 +14,7 @@ class JanitorHoursVC: UIViewController {
     let tableView = UITableView()
     let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
     var services: [Service] = []
-    var serviceDays: [String] = []
+    var serviceDays: [NSDictionary] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +22,50 @@ class JanitorHoursVC: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         configureTableView()
-        tableView.dataSource = self
         configureFloatingButton()
-        getMonthlyServiceData()
+        tableView.dataSource = self
+        getData()
     }
     
     
-    func getMonthlyServiceData() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+    }
+    
+    func getData() {
+        getMonthlyServiceData { serviceDays  in
+            self.serviceDays = serviceDays
+            print(serviceDays)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
+    func getMonthlyServiceData(completion: @escaping ([NSDictionary]) -> Void) {
         Firestore.firestore().collection("Janitor Hours") .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
             .collection("Days").getDocuments { (snapshot, error) in
+                
+                var serviceDays: [NSDictionary] = []
+                var totalServiceFeesSoFar = 0.0
+               // var services: Array<Dictionary<String,Any>> = []
                 
                 guard let snapshot = snapshot else {
                     return
                 }
-                print(snapshot.documents.count)
+                if !snapshot.isEmpty && snapshot.documents.count > 0 {
+                    for days in snapshot.documents{
+                        serviceDays.append(days.data() as NSDictionary)
+                        totalServiceFeesSoFar = totalServiceFeesSoFar + (days.data()["dailyTotal"] as! Double)
+                        //services.append(contentsOf: days.data()["services"] as! Array<Dictionary<String,Any>>)
+                    }
+                    print("Total: \(totalServiceFeesSoFar)")
+                    completion(serviceDays)
+                }else{
+                    print(error?.localizedDescription as Any)
+                }
             }
     }
     
@@ -47,18 +77,18 @@ class JanitorHoursVC: UIViewController {
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(JanitorHoursCell.self, forCellReuseIdentifier: JanitorHoursCell.reuseID)
     }
 
     
     func configureFloatingButton() {
-        view.addSubview(floatingButton)
+        tableView.addSubview(floatingButton)
         floatingButton.addTarget(self, action: #selector(pushAddNewServiceVC), for: .touchUpInside)
         NSLayoutConstraint.activate([
             floatingButton.heightAnchor.constraint(equalToConstant: 44),
-            floatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            floatingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            floatingButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            floatingButton.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            floatingButton.widthAnchor.constraint(equalToConstant: 150)
         ])
     }
 
@@ -70,23 +100,47 @@ class JanitorHoursVC: UIViewController {
     }
 }
 
-extension JanitorHoursVC: UITableViewDataSource {
+extension JanitorHoursVC: UITableViewDataSource, UITableViewDelegate {
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 50.0
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return serviceDays.count
     }
-    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return services.count
+        //print((self.serviceDays[section]["services"] as! Array<Dictionary<String,Any>>).count)
+        return (self.serviceDays[section]["services"] as! Array<Dictionary<String,Any>>).count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = ""
+        let cell = tableView.dequeueReusableCell(withIdentifier: JanitorHoursCell.reuseID, for: indexPath) as! JanitorHoursCell
+        cell.configure()
+        let service = self.serviceDays[indexPath.section]["services"] as! Array<Dictionary<String,Any>>
+        
+        cell.unitNumberLabel.text = "Unit " + (service[indexPath.row]["service"] as! String)
+        cell.unitNumberCleaningFeeLabel.text = "$" + Dictionaries.shared.unitNumberToServiceFee[(service[indexPath.row]["service"] as! String)]!
+
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+        return ((serviceDays[section]["date"] as? String)!) + " - Daily Total: $" + "\(((serviceDays[section]["dailyTotal"] as? Double)!))"
+    }
+
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+//        sectionHeaderView.backgroundColor = .red
+//        return sectionHeaderView
+//    }
+    
 }
 
 

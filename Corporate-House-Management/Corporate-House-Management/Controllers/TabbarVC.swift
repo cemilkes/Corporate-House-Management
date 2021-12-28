@@ -38,7 +38,7 @@ class TabbarVC: UITabBarController {
     func createJanitorHoursNC() -> UINavigationController {
         let janitorHoursVC = JanitorHoursVC()
         janitorHoursVC.title = "Cleaning Hours"
-        janitorHoursVC.tabBarItem = UITabBarItem(title: "Cleaning Hours", image: UIImage(systemName: "bed.double"), tag: 0)
+        janitorHoursVC.tabBarItem = UITabBarItem(title: "Cleaning", image: UIImage(systemName: "bed.double"), tag: 0)
         
         return UINavigationController(rootViewController: janitorHoursVC)
     }
