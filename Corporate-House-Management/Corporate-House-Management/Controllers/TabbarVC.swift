@@ -21,8 +21,9 @@ class TabbarVC: UITabBarController {
     // MARK: Helpers
     
     func configureTabbarVC() {
-        viewControllers = [createJanitorHoursNC(), createHomeNC(), createCredentialsNC(), createListingsNC()]
-        tabBar.tintColor = .purple
+        //, createHomeNC(), createCredentialsNC(), createListingsNC()
+        viewControllers = [createJanitorHoursNC()]
+        tabBar.tintColor = .systemCyan
     }
     
     
