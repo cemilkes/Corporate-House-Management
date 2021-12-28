@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Listings: Codable {
+struct Listings: Codable, Hashable {
     let data: [Listing]
 }
 
-struct Listing: Codable {
+struct Listing: Codable, Hashable {
     
     let id: String // listingID
     let rating: Double

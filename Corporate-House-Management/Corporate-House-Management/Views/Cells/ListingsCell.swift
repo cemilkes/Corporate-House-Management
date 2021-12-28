@@ -26,31 +26,40 @@ class ListingsCell: UICollectionViewCell {
     
     
     func set(listing: Listing) {
+        //print(listings)
         unitNumberLabel.text = listing.id
-        ratingButton.setTitle("\(listing.rating)", for: .normal)
+        //ratingButton.setTitle("\(listing.rating)", for: .normal)
     }
     
     
     private func configure() {
         addSubview(unitImageView)
-        unitImageView.addSubview(unitNumberLabel)
-        addSubview(ratingButton)
+        addSubview(unitNumberLabel)
+        //addSubview(ratingButton)
+        let width = contentView.bounds.width
+        let padding2: CGFloat = 12
+        let minimumItemSpacing: CGFloat = 10
+        let availableWidth = width - (padding2 * 2) - (minimumItemSpacing)
+        let itemWidth = availableWidth / 2
+        let height: CGFloat = itemWidth
+        
         let padding: CGFloat = 8
         
         NSLayoutConstraint.activate([
-            unitImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            unitImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            unitImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            unitImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+            unitImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            unitImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            unitImageView.heightAnchor.constraint(equalToConstant: height),
             
-            unitNumberLabel.bottomAnchor.constraint(equalTo: unitImageView.bottomAnchor, constant: -padding),
-            unitNumberLabel.leadingAnchor.constraint(equalTo: unitImageView.leadingAnchor, constant: padding),
-            unitNumberLabel.trailingAnchor.constraint(equalTo: unitImageView.trailingAnchor, constant: -padding),
-            unitNumberLabel.heightAnchor.constraint(equalToConstant: 20),
+            unitNumberLabel.topAnchor.constraint(equalTo: unitImageView.bottomAnchor, constant: 1),
+            unitNumberLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            unitNumberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            unitNumberLabel.heightAnchor.constraint(equalToConstant: 20)
             
-            ratingButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
-            ratingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            ratingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-            ratingButton.heightAnchor.constraint(equalToConstant: 16)
+//            ratingButton.topAnchor.constraint(equalTo: unitImageView.bottomAnchor, constant: padding),
+//            ratingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+//            ratingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+//            ratingButton.heightAnchor.constraint(equalToConstant: 16)
             
         ])
     }

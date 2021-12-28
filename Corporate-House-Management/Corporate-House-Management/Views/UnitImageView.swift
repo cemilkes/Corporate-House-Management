@@ -23,7 +23,9 @@ class UnitImageView: UIImageView {
     
     
     private func configure() {
+        backgroundColor     = .systemYellow
         layer.cornerRadius  = 10.0
+        contentMode         = .scaleAspectFill
         clipsToBounds       = true
         image               = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false

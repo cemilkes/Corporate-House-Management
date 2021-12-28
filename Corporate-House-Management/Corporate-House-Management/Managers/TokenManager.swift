@@ -15,12 +15,6 @@ struct TokenResponse: Decodable {
 class TokenService {
     static let shared = TokenService()
 
-    let client_id = ""
-    let client_secret = ""
-    
-    let aclient_id = ""
-    let aclient_secret = ""
-    
     func requestToken(client_id: String,
                       client_secret: String,
                       userDefaultKey: String) {
@@ -37,11 +31,10 @@ class TokenService {
             switch response.result {
             case .success(let data):
                 if let users = data as? [String: Any] {
-                    //print(users["access_token"] ?? "")
                     let token = users["access_token"] as! String
                     UserDefaults.standard.set(token, forKey: userDefaultKey)
                     UserDefaults.standard.synchronize()
-                    print("Token User default added: \(token)")
+                    //print("Token User default added: \(token)")
                 }
             case .failure(let error):
                 print("Something went wrong: \(error)")
