@@ -13,10 +13,12 @@ class ListingsCell: UICollectionViewCell {
     let unitImageView   = UnitImageView(frame: .zero)
     let unitNumberLabel = CHTitleLabel(textAlignment: .left, fontSize: 14.0)
     let ratingButton    = CHButton(backgroundColor: .systemGray, title: "Rating")
-    
+    var cornerRadius: CGFloat = 10.0
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        
     }
     
     
@@ -32,6 +34,24 @@ class ListingsCell: UICollectionViewCell {
     }
     
     
+    private func applyCornerRadiusAndShadow() {
+        // Apply rounded corners to contentView
+        contentView.layer.cornerRadius = cornerRadius
+        contentView.layer.masksToBounds = true
+        
+        // Set masks to bounds to false to avoid the shadow
+        // from being clipped to the corner radius
+        layer.cornerRadius = cornerRadius
+        layer.masksToBounds = false
+        
+        // Apply a shadow
+        layer.shadowRadius = 8.0
+        layer.shadowOpacity = 0.10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 5)
+        
+    }
+    
     private func configure() {
         addSubview(unitImageView)
         addSubview(unitNumberLabel)
@@ -41,14 +61,14 @@ class ListingsCell: UICollectionViewCell {
         let minimumItemSpacing: CGFloat = 10
         let availableWidth = width - (padding2 * 2) - (minimumItemSpacing)
         let itemWidth = availableWidth / 2
-        let height: CGFloat = itemWidth
+        let height: CGFloat = itemWidth + 40
         
         let padding: CGFloat = 8
         
         NSLayoutConstraint.activate([
-            unitImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-            unitImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            unitImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            unitImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            unitImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            unitImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             unitImageView.heightAnchor.constraint(equalToConstant: height),
             
             unitNumberLabel.topAnchor.constraint(equalTo: unitImageView.bottomAnchor, constant: 1),

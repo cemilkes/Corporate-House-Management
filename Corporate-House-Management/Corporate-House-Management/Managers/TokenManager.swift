@@ -26,7 +26,7 @@ class TokenService {
                            "grant_type":"client_credentials"]
         
         AF.request(getTokenPath, method: .post, parameters: tokenParams, encoder: JSONParameterEncoder.default).responseJSON { response in
-            //debugPrint(response)
+            debugPrint(response)
             //print(response)
             switch response.result {
             case .success(let data):
