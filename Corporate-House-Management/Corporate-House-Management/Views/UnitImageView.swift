@@ -9,7 +9,8 @@ import UIKit
 
 class UnitImageView: UIImageView {
 
-    let placeholderImage = UIImage(named: "unit-placeholder.jpg")
+    let placeholderImage    = UIImage(named: "unit-placeholder.jpg")
+    let cache               = CacheManager.shared.cache
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +35,12 @@ class UnitImageView: UIImageView {
     
     func downloadImage(from urlString: String) {
         
+        let cacheKey = NSString(string: urlString)
+        if let image = cache.object(forKey: cacheKey) {
+            self.image = image
+            return
+        }
+        
         //Check if we have a valid url
         guard let url = URL(string: urlString) else { return }
         
@@ -46,7 +53,7 @@ class UnitImageView: UIImageView {
             guard let image = UIImage(data: data) else {
                 return
             }
-                
+            self.cache.setObject(image, forKey: cacheKey)
             DispatchQueue.main.async { self.image = image }
             
         }
