@@ -14,6 +14,7 @@ struct Listings: Codable, Hashable {
 struct Listing: Codable, Hashable {
     
     let id: String // listingID
+    let picture: String
     let rating: Double
     
     

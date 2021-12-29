@@ -29,7 +29,8 @@ class ListingsCell: UICollectionViewCell {
     
     func set(listing: Listing) {
         //print(listings)
-        unitNumberLabel.text = listing.id
+        unitNumberLabel.text =  Dictionaries.shared.listingIDtoUnitNumber[listing.id]
+        unitImageView.downloadImage(from: listing.picture)
         //ratingButton.setTitle("\(listing.rating)", for: .normal)
     }
     
