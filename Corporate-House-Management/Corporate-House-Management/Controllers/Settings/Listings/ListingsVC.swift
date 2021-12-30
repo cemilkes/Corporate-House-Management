@@ -48,6 +48,8 @@ class ListingsVC: UIViewController {
         let convertedClient_id_a = client_id_a.replacingOccurrences(of: "\"", with: "")
         let convertedClient_secret_a = client_secret_a.replacingOccurrences(of: "\"", with: "")
         
+        showLoadingView()
+        
         TokenService.shared.requestToken(client_id: convertedClient_id_a,
                                          client_secret: convertedClient_secret_a, userDefaultKey: "a_listings")
         
@@ -56,6 +58,8 @@ class ListingsVC: UIViewController {
                                               clientSecret: convertedClient_secret_a,
                                            hostUserDefault: "a_listings", page: 1) { result in
 
+                self.dismissLoadingView()
+                
                 switch result {
                 case .success(let listings):
                     self.listings = listings.data
