@@ -15,7 +15,7 @@ class JanitorHoursVC: UIViewController {
     let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
     var services: [Service] = []
     var serviceDays: [NSDictionary] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // System background will adapt dark-light mode
@@ -24,29 +24,39 @@ class JanitorHoursVC: UIViewController {
         configureTableView()
         configureFloatingButton()
         tableView.dataSource = self
-        getData()
+        //getData()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()
+        
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     
     func getData() {
         getMonthlyServiceData { serviceDays  in
+            
             self.serviceDays = serviceDays
-            print(serviceDays)
+            //print(serviceDays)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                
             }
         }
     }
     
     
     func getMonthlyServiceData(completion: @escaping ([NSDictionary]) -> Void) {
-        Firestore.firestore().collection("Janitor Hours") .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
-            .collection("Days").getDocuments { (snapshot, error) in
+        
+        Firestore.firestore().collection("Janitor Hours").document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+            .collection("Days").order(by: "date", descending: true).addSnapshotListener { (snapshot, error) in
                 
                 var serviceDays: [NSDictionary] = []
                 var totalServiceFeesSoFar = 0.0
@@ -95,7 +105,7 @@ class JanitorHoursVC: UIViewController {
     
     @objc func pushAddNewServiceVC() {
         let addNewServiceVC = AddNewServiceVC()
-        addNewServiceVC.modalPresentationStyle = .overFullScreen
+        addNewServiceVC.modalPresentationStyle = .overCurrentContext
         present(addNewServiceVC, animated: true, completion: nil)
     }
 }

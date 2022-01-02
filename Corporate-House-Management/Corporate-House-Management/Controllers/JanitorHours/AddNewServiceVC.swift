@@ -24,10 +24,10 @@ class AddNewServiceVC: UIViewController {
     let dismissButton    = CHButton(backgroundColor: .systemRed, title: "Cancel")
     let padding: CGFloat = 15.0
     var dailyTotal: Double = 0
+    var currentMonthlyTotal: Double = 0
     var serviceArray: [Service] = []
     var ref: DatabaseReference!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
@@ -49,6 +49,14 @@ class AddNewServiceVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureDatePicker()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        if let janitorHoursVC = presentingViewController as? JanitorHoursVC {
+//            janitorHoursVC.getData()
+//            print("janitor hours get data called")
+//        }
     }
     
     
@@ -209,31 +217,42 @@ class AddNewServiceVC: UIViewController {
     @objc func saveButtonPressed() {
         var serviceArray: Array<Dictionary<String,Any>> = []
         
-        downloadServiceDaysFromFirestore { serviceDictArray, dailyTotal in
-            if serviceDictArray.isEmpty {
-                self.addNewServiceData()
-            }else {
-                let newService = Service(date: self.dateTextField.text!,
-                                         service: self.serviceTextField.text!,
-                                         fee: self.feeLabel.text!)
-                let serviceDict = self.serviceDictionaryFrom(newService)
-                serviceArray = serviceDictArray
-                serviceArray.append(serviceDict as! Dictionary<String, Any>)
-                var newDailyTotal = dailyTotal
-                newDailyTotal = newDailyTotal + (Double(self.feeLabel.text!) ?? 0.0)
-                
-                let data: [String:Any] = [
-                    "date": self.dateTextField.text!,
-                    "dailyTotal": newDailyTotal,
-                    "services": serviceArray
-                ]
-                
-                Firestore.firestore().collection("Janitor Hours")
-                    .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
-                    .collection("Days")
-                    .document(Date().getCalendarDate()).setData(data)
+        showLoadingView()
+        
+        delayWithSeconds(2) {
+            self.downloadServiceDaysFromFirestore { serviceDictArray, dailyTotal in
+                if serviceDictArray.isEmpty {
+                    self.addNewServiceData()
+                }else {
+                    let newService = Service(date: self.dateTextField.text!,
+                                             service: self.serviceTextField.text!,
+                                             fee: self.feeLabel.text!)
+                    let serviceDict = self.serviceDictionaryFrom(newService)
+                    serviceArray = serviceDictArray
+                    serviceArray.append(serviceDict as! Dictionary<String, Any>)
+                    
+                    var newDailyTotal = dailyTotal
+                    newDailyTotal = newDailyTotal + (Double(self.feeLabel.text!) ?? 0.0)
+
+                    let data: [String:Any] = [
+                        "date": self.dateTextField.text!,
+                        "dailyTotal": newDailyTotal,
+                        "services": serviceArray
+                    ]
+                    
+                    Firestore.firestore().collection("Janitor Hours")
+                        .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
+                        .collection("Days")
+                        .document(Date().getCalendarDate()).setData(data)
+                    
+                    
+                    
+                }
+                self.dismissLoadingView()
             }
         }
+        
+        dismissVC()
     }
     
     

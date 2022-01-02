@@ -10,6 +10,8 @@ class ReservationAPI {
     
     // API CALLS:
     
+    // Also consider this (new tableview Configuration): https://www.youtube.com/watch?v=8xjkFkSpl1M&t=514
+    
     //Diffable Data source(Collection + TableView), Function Call: NSURLSession regular, result type, combine
     
     //Reservations -> Used NSURLSession, regular tableView Data Loading(not diffable datasource)
