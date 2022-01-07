@@ -11,10 +11,11 @@ import FirebaseDatabase
 
 class JanitorHoursVC: UIViewController {
     
-    let tableView = UITableView()
-    let floatingButton = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
-    var services: [Service] = []
+    let tableView                   = UITableView()
+    let floatingButton              = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
+    var services: [Service]         = []
     var serviceDays: [NSDictionary] = []
+    var totalServiceFees: Double    = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,9 @@ class JanitorHoursVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()
+        delayWithSeconds(2) {
+            print("totalServiceFees: \(self.totalServiceFees)")
+        }
         
     }
     
@@ -71,6 +75,7 @@ class JanitorHoursVC: UIViewController {
                         totalServiceFeesSoFar = totalServiceFeesSoFar + (days.data()["dailyTotal"] as! Double)
                         //services.append(contentsOf: days.data()["services"] as! Array<Dictionary<String,Any>>)
                     }
+                    self.totalServiceFees = totalServiceFeesSoFar
                     print("Total: \(totalServiceFeesSoFar)")
                     completion(serviceDays)
                 }else{
@@ -142,6 +147,8 @@ extension JanitorHoursVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
         return ((serviceDays[section]["date"] as? String)!) + " - Daily Total: $" + "\(((serviceDays[section]["dailyTotal"] as? Double)!))"
+        
+        
     }
 
     

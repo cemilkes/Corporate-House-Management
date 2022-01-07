@@ -347,7 +347,6 @@
 			children = (
 				25E02A81277CD9F80093F941 /* CacheManager */,
 				255740202772A63B00F37AD8 /* TokenManagers */,
-				255740132772467E00F37AD8 /* TokenManager.swift */,
 				2557401F2772A62B00F37AD8 /* NetworkManagers */,
 			);
 			path = Managers;
@@ -365,6 +364,7 @@
 		255740202772A63B00F37AD8 /* TokenManagers */ = {
 			isa = PBXGroup;
 			children = (
+				255740132772467E00F37AD8 /* TokenManager.swift */,
 			);
 			path = TokenManagers;
 			sourceTree = "<group>";
