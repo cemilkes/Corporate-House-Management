@@ -8,22 +8,29 @@
 import Foundation
 class ReservationAPI {
     
+    // Add Readme File
+    
     // API CALLS:
+
+    //Diffable Data source(Collection + TableView), Function Call: NSURLSession regular, async/awaits,  result type, combine, RxSwift
     
-    // Also consider this (new tableview Configuration): https://www.youtube.com/watch?v=8xjkFkSpl1M&t=514
+ // MARK: Call Functions
     
-    //Diffable Data source(Collection + TableView), Function Call: NSURLSession regular, result type, combine
+    //Reservations -> call function with Result type and diffable datasoure on tableView. // Also consider this (new tableview Configuration): https://www.youtube.com/watch?v=8xjkFkSpl1M&t=514
     
-    //Reservations -> Used NSURLSession, regular tableView Data Loading(not diffable datasource)
+        /*
+        https://technology.doximity.com/articles/coordinating-asynchronous-tasks-in-ios
+        https://www.youtube.com/watch?v=k_eoF9gYA-E
+        https://www.youtube.com/watch?v=lOI0aUkeuLw
+        https://betterprogramming.pub/a-deep-dive-into-dispatch-groups-8251bbb8b001
+        **/
     
-    //Listings -> call function with Result type and diffable datasoure on collectionView (For May side)
-    //Listings Id -> detail VC
+    //Listings -> Use async/awaits and diffable datasource (colletion view)
+    //Listings Id -> detail VC (it may need to be used in reservations screen - access the listing easily.)
     
-    //Listings (For Angel side)
-    //Listings By Id
-    
-    //Calendar -> get Calendar api from Listings page - Alamofire get request and regular collection view (maybe both table and collection view)
-    
+    //Listings (For Angel side) -> Use async/awaits and diffable datasource (collection view)
+    //Listings By Id -> detail VC (it may need to be used in reservations screen - access the listing easily.)
+
     //Request token -> Alamofire
     
     // May
@@ -32,8 +39,10 @@ class ReservationAPI {
     //Properties by ID -> populate detail VC
     
     //Angel
-    //Properties ->
+    //Properties -> use RxSwift (calling networking data and populating tableView)
     //Properties by ID -> populate detail VC
+    
+    //Calendar -> get Calendar api from Listings page - Alamofire get request and regular collection view (maybe both table and collection view)
     
     static let shared = ReservationAPI()
   

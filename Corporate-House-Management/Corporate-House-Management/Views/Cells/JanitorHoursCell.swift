@@ -12,6 +12,7 @@ class JanitorHoursCell: UITableViewCell {
     // MARK: Error occured - Fixed
     //Warning once only: Detected a case where constraints ambiguously suggest a height of zero for a table view cell's content view. We're considering the collapse unintentional and using standard height instead.
     //https://www.hackingwithswift.com/forums/ios/uitableview-automatic-row-height-programatically/2203
+    
     static let reuseID = "JanitorHoursCell"
     
     var dateLabel                   = CHTitleLabel(textAlignment: .left, fontSize: 16)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0639C251AC3E6479073E44AF /* Pods_Corporate_House_ManagementTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C2CDD4006DDE24B8F31FBB /* Pods_Corporate_House_ManagementTests.framework */; };
+		2508A7B227934B7700E5A704 /* JanitorHoursHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2508A7B127934B7700E5A704 /* JanitorHoursHeaderView.swift */; };
 		2554286727626D9D009460EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554286627626D9D009460EC /* AppDelegate.swift */; };
 		2554286927626D9D009460EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2554286827626D9D009460EC /* SceneDelegate.swift */; };
 		2554287027626D9F009460EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2554286F27626D9F009460EC /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2508A7B127934B7700E5A704 /* JanitorHoursHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JanitorHoursHeaderView.swift; sourceTree = "<group>"; };
 		2554286327626D9D009460EC /* Corporate-House-Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corporate-House-Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2554286627626D9D009460EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2554286827626D9D009460EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				25E02A77277A5E080093F941 /* ListingsCell.swift */,
 				25E02A7E277A8D160093F941 /* JanitorHoursCell.swift */,
+				2508A7B127934B7700E5A704 /* JanitorHoursHeaderView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				25573FFE276E83A300F37AD8 /* CHTitleLabel.swift in Sources */,
 				25E02A83277CDA130093F941 /* CacheManager.swift in Sources */,
 				25E02A78277A5E080093F941 /* ListingsCell.swift in Sources */,
+				2508A7B227934B7700E5A704 /* JanitorHoursHeaderView.swift in Sources */,
 				255740272773DEA400F37AD8 /* ListingsAPI.swift in Sources */,
 				25E02A7C277A6F6B0093F941 /* UIHelper.swift in Sources */,
 				255740182772497F00F37AD8 /* PropertyData.swift in Sources */,

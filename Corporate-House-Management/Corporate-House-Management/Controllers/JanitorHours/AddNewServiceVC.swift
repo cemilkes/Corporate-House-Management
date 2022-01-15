@@ -244,10 +244,8 @@ class AddNewServiceVC: UIViewController {
                         .document(Date().getCalendarYear() + ", " + Date().getCalendarMonth())
                         .collection("Days")
                         .document(Date().getCalendarDate()).setData(data)
-                    
-                    
-                    
                 }
+                
                 self.dismissLoadingView()
             }
         }

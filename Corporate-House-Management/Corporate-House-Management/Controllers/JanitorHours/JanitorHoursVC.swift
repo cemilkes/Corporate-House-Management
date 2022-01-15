@@ -32,9 +32,6 @@ class JanitorHoursVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()
-        delayWithSeconds(2) {
-            print("totalServiceFees: \(self.totalServiceFees)")
-        }
         
     }
     
@@ -93,6 +90,34 @@ class JanitorHoursVC: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.register(JanitorHoursCell.self, forCellReuseIdentifier: JanitorHoursCell.reuseID)
+        
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        tableView.addSubview(headerView)
+        
+        
+        headerView.backgroundColor = .systemBackground
+        let padding: CGFloat        = 8
+        
+        let currentTotalServiceFeeLabel = CHTitleLabel(textAlignment: .right, fontSize: 20)
+        headerView.addSubview(currentTotalServiceFeeLabel)
+        
+        NSLayoutConstraint.activate([
+            currentTotalServiceFeeLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: padding),
+            currentTotalServiceFeeLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -padding),
+            currentTotalServiceFeeLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -padding),
+            currentTotalServiceFeeLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        delayWithSeconds(1) {
+            //print("totalServiceFees: \(self.totalServiceFees)")
+            currentTotalServiceFeeLabel.text = "totalServiceFees: \(self.totalServiceFees)"
+        }
+
+        tableView.tableHeaderView = headerView
+        
+        //self.tableView.sectionHeaderHeight = 50
+        
+        //tableView.register(JanitorHoursHeaderView.self, forHeaderFooterViewReuseIdentifier: JanitorHoursHeaderView.reuseID)
     }
 
     
@@ -116,11 +141,7 @@ class JanitorHoursVC: UIViewController {
 }
 
 extension JanitorHoursVC: UITableViewDataSource, UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50.0
-//    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return serviceDays.count
     }
@@ -147,15 +168,20 @@ extension JanitorHoursVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
         return ((serviceDays[section]["date"] as? String)!) + " - Daily Total: $" + "\(((serviceDays[section]["dailyTotal"] as? Double)!))"
-        
-        
     }
 
-    
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//
+//        return 50.0
+//    }
+//
+//
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let sectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
-//        sectionHeaderView.backgroundColor = .red
-//        return sectionHeaderView
+////        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: JanitorHoursHeaderView.reuseID) as! JanitorHoursHeaderView
+////
+////        return header
+//
 //    }
     
 }

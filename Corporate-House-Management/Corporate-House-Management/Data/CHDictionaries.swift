@@ -140,9 +140,9 @@ class Dictionaries {
         "415" : AppConstants.cleaningFee2B2B,
         "416" : AppConstants.cleaningFee1B1B,
         
-        "Vacuum(Hallways)"   : AppConstants.hallwaysVacuumFee,
-        "Lobby&Bathroom"     : AppConstants.lobbyAndBathroomFee,
-        "Courtyard Bathroom" : AppConstants.courtyardBathroomFee,
+        "Vacuum(Hallways)"   : AppConstants.cleaningFeeHallwaysVacuum,
+        "Lobby&Bathroom"     : AppConstants.cleaningFeeLobbyAndBathroom,
+        "Courtyard Bathroom" : AppConstants.cleaningFeeCourtyardBathroom,
     ]
     
 }
