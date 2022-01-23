@@ -15,6 +15,7 @@ class JanitorHoursVC: UIViewController {
     let floatingButton              = CHButton(backgroundColor: .systemCyan, title: "Add New Service")
     var services: [Service]         = []
     var serviceDays: [NSDictionary] = []
+    var filteredServiceDays: [Service] = []
     var totalServiceFees: Double    = 0.0
 
     override func viewDidLoad() {
@@ -32,7 +33,12 @@ class JanitorHoursVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()
-        
+        for service in services {
+            if service.fee == "80" {
+                filteredServiceDays.append(service)
+            }
+        }
+        print("Filtered Services: \(filteredServiceDays)")
     }
     
     
@@ -178,9 +184,9 @@ extension JanitorHoursVC: UITableViewDataSource, UITableViewDelegate {
 //
 //
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-////        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: JanitorHoursHeaderView.reuseID) as! JanitorHoursHeaderView
-////
-////        return header
+//        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: JanitorHoursHeaderView.reuseID) as! JanitorHoursHeaderView
+//
+//        return header
 //
 //    }
     
