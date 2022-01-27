@@ -165,7 +165,8 @@ extension JanitorHoursVC: UITableViewDataSource, UITableViewDelegate {
         let service = self.serviceDays[indexPath.section]["services"] as! Array<Dictionary<String,Any>>
         
         cell.unitNumberLabel.text = "Unit " + (service[indexPath.row]["service"] as! String)
-        cell.unitNumberCleaningFeeLabel.text = "$" + Dictionaries.shared.unitNumberToServiceFee[(service[indexPath.row]["service"] as! String)]!
+        cell.unitNumberCleaningFeeLabel.text = "$" + "\(service[indexPath.row]["fee"] as! String)"
+        //Dictionaries.shared.unitNumberToServiceFee[(service[indexPath.row]["service"] as! String)]!
 
         return cell
     }
