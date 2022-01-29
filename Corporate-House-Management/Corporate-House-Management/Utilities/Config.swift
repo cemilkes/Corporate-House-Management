@@ -20,3 +20,10 @@ enum Color {
     // This syntax will present you with colour picker component right on the code line
     static let tertiaryColor = #colorLiteral(red: 0.22, green: 0.58, blue: 0.29, alpha: 1.0)
 }
+
+enum Images {
+    static let neoOnFirstLogo           = UIImage(named: "neo-on-first-logo")
+    //static let emptyStateLogo           = UIImage(named: "empty-state-logo")
+    //static let ghLogo                   = UIImage(named: "gh-logo")
+    
+}
