@@ -5,7 +5,7 @@
 //  Created by Mr Kes on 12/21/21.
 //
 
-import Foundation
+import UIKit
 
 struct AppConstants {
     
@@ -19,3 +19,8 @@ struct AppConstants {
     static let cleaningFeeLobbyAndBathroom      = "40"
     static let cleaningFeeCourtyardBathroom     = "20"
 }
+
+//enum Config {
+//    static let baseURL = NSURL(string: "http://www.example.org/")!
+//    static let splineReticulatorName = "foobar"
+//}
