@@ -10,10 +10,12 @@ import UIKit
 class LoginVC: UIViewController {
 
     
-    let logoImageView = UIImageView()
-    let userNameTextField = CHTextField(placeholder: "Enter your username")
-    let phoneNumberTextField = CHTextField(placeholder: "Enter your phone number")
-    let verifyPhoneNumberButton = CHButton(backgroundColor: Color.primaryColor, title: "Verify Phone Number")
+    let logoImageView           = UIImageView()
+    let userNameTextField       = CHTextField(placeholder: "Enter your username")
+    let phoneNumberTextField    = CHTextField(placeholder: "Enter your phone number")
+    let verifyPhoneNumberButton = CHButton(backgroundColor: #colorLiteral(red: 0, green: 0.5843137255, blue: 0.7333333333, alpha: 1).withAlphaComponent(0.5) , title: "Verify Phone Number")
+    
+    private var viewModel       = LoginViewModel(username: "", phoneNumber: "", userType: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +24,21 @@ class LoginVC: UIViewController {
         configureUserNameTextField()
         configurePhoneNumberTextField()
         configureVerifyPhoneNumberButton()
+        configureNotificationObservers()
         // Do any additional setup after loading the view.
     }
  
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == userNameTextField {
+            viewModel.username = sender.text
+        }else if(sender == phoneNumberTextField) {
+            viewModel.phoneNumber = sender.text
+        }
+        
+        verifyPhoneNumberButton.backgroundColor = viewModel.buttonBackgroundColor
+        verifyPhoneNumberButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    }
     
     func configureLogoImageView() {
         view.addSubview(logoImageView)
@@ -66,12 +80,19 @@ class LoginVC: UIViewController {
     
     func configureVerifyPhoneNumberButton() {
         view.addSubview(verifyPhoneNumberButton)
+        verifyPhoneNumberButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.67), for: .normal)
         NSLayoutConstraint.activate([
             verifyPhoneNumberButton.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
             verifyPhoneNumberButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             verifyPhoneNumberButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             verifyPhoneNumberButton.heightAnchor.constraint(equalToConstant: 44)
         ])
+    }
+    
+    
+    func configureNotificationObservers() {
+        userNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        phoneNumberTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
 }
