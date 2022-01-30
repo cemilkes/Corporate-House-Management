@@ -13,6 +13,7 @@ class LoginVC: UIViewController {
     let logoImageView = UIImageView()
     let userNameTextField = CHTextField(placeholder: "Enter your username")
     let phoneNumberTextField = CHTextField(placeholder: "Enter your phone number")
+    let verifyPhoneNumberButton = CHButton(backgroundColor: Color.primaryColor, title: "Verify Phone Number")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class LoginVC: UIViewController {
         configureLogoImageView()
         configureUserNameTextField()
         configurePhoneNumberTextField()
+        configureVerifyPhoneNumberButton()
         // Do any additional setup after loading the view.
     }
  
@@ -59,7 +61,17 @@ class LoginVC: UIViewController {
             phoneNumberTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             phoneNumberTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
-        
+    }
+    
+    
+    func configureVerifyPhoneNumberButton() {
+        view.addSubview(verifyPhoneNumberButton)
+        NSLayoutConstraint.activate([
+            verifyPhoneNumberButton.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
+            verifyPhoneNumberButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            verifyPhoneNumberButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            verifyPhoneNumberButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
     }
     
 }

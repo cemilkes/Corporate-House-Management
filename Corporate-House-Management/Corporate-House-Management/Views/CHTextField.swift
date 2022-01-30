@@ -37,7 +37,7 @@ class CHTextField: UITextField {
         textColor                   = .label
         tintColor                   = .label //blinking cursor
         textAlignment               = .center
-        font                        = UIFont.preferredFont(forTextStyle: .title2)
+        font                        = UIFont.preferredFont(forTextStyle: .title3)
         adjustsFontSizeToFitWidth   = true
         minimumFontSize             = 12
         
