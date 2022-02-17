@@ -114,6 +114,7 @@ class Dictionaries {
         "208" : AppConstants.cleaningFee2B2B,
         "209" : AppConstants.cleaningFee1B1B,
         "212" : AppConstants.cleaningFee2B2B,
+        "214" : AppConstants.cleaningFee2B2B,
         "215" : AppConstants.cleaningFee2B2B,
         "218" : AppConstants.cleaningFee3B3B,
         
@@ -122,6 +123,7 @@ class Dictionaries {
         "308" : AppConstants.cleaningFee2B2B,
         "309" : AppConstants.cleaningFee1B1B,
         "310" : AppConstants.cleaningFee1B1B,
+        "313" : AppConstants.cleaningFee2B2B,
         "314" : AppConstants.cleaningFee2B2B,
         "316" : AppConstants.cleaningFee2B2B,
         
@@ -140,9 +142,10 @@ class Dictionaries {
         "415" : AppConstants.cleaningFee2B2B,
         "416" : AppConstants.cleaningFee1B1B,
         
-        "Vacuum(Hallways)"   : AppConstants.cleaningFeeHallwaysVacuum,
-        "Lobby&Bathroom"     : AppConstants.cleaningFeeLobbyAndBathroom,
-        "Courtyard Bathroom" : AppConstants.cleaningFeeCourtyardBathroom,
+        "Vacuum(Hallways)"      : AppConstants.cleaningFeeHallwaysVacuum,
+        "Lobby&Bathroom"        : AppConstants.cleaningFeeLobbyAndBathroom,
+        "Courtyard Bathroom"    : AppConstants.cleaningFeeCourtyardBathroom,
+        "Elevator&Stain Carpet" : AppConstants.cleaningFeeElevatorAndStainCarpet
     ]
     
 }

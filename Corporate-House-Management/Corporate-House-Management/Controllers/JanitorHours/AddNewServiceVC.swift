@@ -262,7 +262,15 @@ class AddNewServiceVC: UIViewController {
     func configurePickerView() {
         pickerView.delegate         = self
         pickerView.dataSource       = self
+        let toolBar = UIToolbar()
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+        toolBar.setItems([doneButton], animated: true)
+        
+        serviceTextField.inputAccessoryView         = toolBar
         serviceTextField.inputView  = pickerView
+        //datePickerView.preferredDatePickerStyle = .wheels
     }
     
     
@@ -276,28 +284,30 @@ class AddNewServiceVC: UIViewController {
     
     
     @objc func doneButtonPressed() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd, E"
-        dateTextField.text  = formatter.string(from: datePickerView.date)
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMM dd, E"
+//        dateTextField.text  = formatter.string(from: datePickerView.date)
+        serviceTextField.inputView  = pickerView.inputView
+        saveButtonPressed()
         self.view.endEditing(true)
     }
+
     
-    
-    func configureToolBar() {
-        
-         let toolBar = UIToolbar()
-         toolBar.translatesAutoresizingMaskIntoConstraints = false
-         toolBar.sizeToFit()
-         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
-         toolBar.setItems([doneButton], animated: true)
-         
-         dateTextField.inputAccessoryView        = toolBar
-         dateTextField.inputView                 = datePickerView
-         datePickerView.preferredDatePickerStyle = .wheels
-         datePickerView.datePickerMode           = .date
-         datePickerView.date                     = Date()
-         datePickerView.locale                   = .current
-    }
+//    func configureToolBar() {
+//
+//         let toolBar = UIToolbar()
+//         toolBar.translatesAutoresizingMaskIntoConstraints = false
+//         toolBar.sizeToFit()
+//         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+//         toolBar.setItems([doneButton], animated: true)
+//
+//         dateTextField.inputAccessoryView        = toolBar
+//         dateTextField.inputView                 = datePickerView
+//         datePickerView.preferredDatePickerStyle = .wheels
+//         datePickerView.datePickerMode           = .date
+//         datePickerView.date                     = Date()
+//         datePickerView.locale                   = .current
+//    }
     
 }
 
@@ -321,7 +331,7 @@ extension AddNewServiceVC: UIPickerViewDelegate, UIPickerViewDataSource {
         
         serviceTextField.text = ServiceData.shared.services[row]
         feeLabel.text = (Dictionaries.shared.unitNumberToServiceFee[ServiceData.shared.services[row]] ?? "0")
-        serviceTextField.resignFirstResponder()
+        //serviceTextField.resignFirstResponder()
         
     }
     
