@@ -284,14 +284,10 @@ class AddNewServiceVC: UIViewController {
     
     
     @objc func doneButtonPressed() {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM dd, E"
-//        dateTextField.text  = formatter.string(from: datePickerView.date)
         serviceTextField.inputView  = pickerView.inputView
         saveButtonPressed()
         self.view.endEditing(true)
     }
-
     
 //    func configureToolBar() {
 //

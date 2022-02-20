@@ -11,8 +11,8 @@ enum UserType: String, Codable {
     case admin
     case manager
     case employee
-    case airbnbHost
     case janitor
+    case visitor
 }
 
 struct User: Codable {
