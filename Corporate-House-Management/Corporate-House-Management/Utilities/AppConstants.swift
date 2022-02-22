@@ -14,6 +14,7 @@ struct AppConstants {
     static let cleaningFee1B1B                      = "60"
     static let cleaningFee2B2B                      = "80"
     static let cleaningFee3B3B                      = "100"
+    static let deepCleaningUnit207                  = "90"
     
     static let cleaningFeeHallwaysVacuum            = "40"
     static let cleaningFeeLobbyAndBathroom          = "40"

@@ -111,6 +111,7 @@ class Dictionaries {
     
     var unitNumberToServiceFee: [String: String] = [
         
+        "207" : AppConstants.deepCleaningUnit207,
         "208" : AppConstants.cleaningFee2B2B,
         "209" : AppConstants.cleaningFee1B1B,
         "212" : AppConstants.cleaningFee2B2B,
