@@ -24,4 +24,6 @@ struct LoginViewModel {
     var buttonTitleColor: UIColor {
         return formIsValid ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.67)
     }
+    
+    
 }

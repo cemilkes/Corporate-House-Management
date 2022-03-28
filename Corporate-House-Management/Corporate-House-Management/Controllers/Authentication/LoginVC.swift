@@ -12,7 +12,7 @@ class LoginVC: UIViewController {
     
     let logoImageView           = UIImageView()
     let userNameTextField       = CHTextField(placeholder: "Enter your username")
-    let phoneNumberTextField    = CHTextField(placeholder: "Enter your phone number")
+    let phoneNumberTextField    = CHTextField(placeholder: "(XXX) XXX-XXXX")
     let verifyPhoneNumberButton = CHButton(backgroundColor: #colorLiteral(red: 0, green: 0.5843137255, blue: 0.7333333333, alpha: 1).withAlphaComponent(0.5) , title: "Verify Phone Number")
     
     private var viewModel       = LoginViewModel(username: "", phoneNumber: "", userType: nil)
@@ -58,6 +58,7 @@ class LoginVC: UIViewController {
     func configureUserNameTextField() {
         view.addSubview(userNameTextField)
         
+        
         NSLayoutConstraint.activate([
             userNameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
             userNameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
@@ -69,6 +70,9 @@ class LoginVC: UIViewController {
     
     func configurePhoneNumberTextField() {
         view.addSubview(phoneNumberTextField)
+        phoneNumberTextField.delegate = self
+        phoneNumberTextField.keyboardType = .phonePad
+        
         NSLayoutConstraint.activate([
             phoneNumberTextField.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 20),
             phoneNumberTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
@@ -95,4 +99,13 @@ class LoginVC: UIViewController {
         phoneNumberTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = phoneNumberTextField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        phoneNumberTextField.text = format(with: "(XXX) XXX-XXXX", phone: newString)
+        return false
+    }
 }
