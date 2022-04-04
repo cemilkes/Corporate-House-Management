@@ -85,6 +85,8 @@ class LoginVC: UIViewController {
     func configureVerifyPhoneNumberButton() {
         view.addSubview(verifyPhoneNumberButton)
         verifyPhoneNumberButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.67), for: .normal)
+        verifyPhoneNumberButton.addTarget(self, action: #selector(didTapVerifyPhoneNumberButton), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             verifyPhoneNumberButton.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
             verifyPhoneNumberButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
@@ -93,6 +95,21 @@ class LoginVC: UIViewController {
         ])
     }
     
+    @objc func didTapVerifyPhoneNumberButton() {
+        if let text = phoneNumberTextField.text, !text.isEmpty {
+            let number = "+1\(text)"
+            AuthManager.shared.startAuth(phoneNumber: number) { [weak self] success in
+                guard success else { return }
+                DispatchQueue.main.async {
+                    let vc      = SMSCodeVerificationVC()
+                    vc.title    = "Enter Code"
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }else {
+            print("Phone number field is empty")
+        }
+    }
     
     func configureNotificationObservers() {
         userNameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)

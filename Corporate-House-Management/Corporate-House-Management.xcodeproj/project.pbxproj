@@ -46,6 +46,8 @@
 		2557402C27762A6C00F37AD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */; };
 		2557402E27762FBB00F37AD8 /* ServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2557402D27762FBB00F37AD8 /* ServiceData.swift */; };
 		255740392777B8A300F37AD8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255740382777B8A300F37AD8 /* Helper.swift */; };
+		25766AB627F4B26E00451694 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25766AB527F4B26E00451694 /* AuthManager.swift */; };
+		25766AB827FA9D2000451694 /* SMSCodeVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25766AB727FA9D2000451694 /* SMSCodeVerificationVC.swift */; };
 		25E02A78277A5E080093F941 /* ListingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E02A77277A5E080093F941 /* ListingsCell.swift */; };
 		25E02A7A277A64480093F941 /* UnitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E02A79277A64480093F941 /* UnitImageView.swift */; };
 		25E02A7C277A6F6B0093F941 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E02A7B277A6F6B0093F941 /* UIHelper.swift */; };
@@ -121,6 +123,8 @@
 		2557402B27762A6C00F37AD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2557402D27762FBB00F37AD8 /* ServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceData.swift; sourceTree = "<group>"; };
 		255740382777B8A300F37AD8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		25766AB527F4B26E00451694 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		25766AB727FA9D2000451694 /* SMSCodeVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeVerificationVC.swift; sourceTree = "<group>"; };
 		25E02A77277A5E080093F941 /* ListingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsCell.swift; sourceTree = "<group>"; };
 		25E02A79277A64480093F941 /* UnitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitImageView.swift; sourceTree = "<group>"; };
 		25E02A7B277A6F6B0093F941 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 		25574012277232C300F37AD8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				25766AB427F4B25900451694 /* AuthManager */,
 				25E02A81277CD9F80093F941 /* CacheManager */,
 				255740202772A63B00F37AD8 /* TokenManagers */,
 				2557401F2772A62B00F37AD8 /* NetworkManagers */,
@@ -407,6 +412,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		25766AB427F4B25900451694 /* AuthManager */ = {
+			isa = PBXGroup;
+			children = (
+				25766AB527F4B26E00451694 /* AuthManager.swift */,
+			);
+			name = AuthManager;
+			sourceTree = "<group>";
+		};
 		25E02A76277A5DDC0093F941 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				25F97BAF27A5DA4200561C45 /* LoginVC.swift */,
+				25766AB727FA9D2000451694 /* SMSCodeVerificationVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -714,6 +728,7 @@
 				25573FFC276E838700F37AD8 /* CHAlertVC.swift in Sources */,
 				25F97BAE27A5D2FC00561C45 /* User.swift in Sources */,
 				2554289927627B67009460EC /* PropertyListVC.swift in Sources */,
+				25766AB627F4B26E00451694 /* AuthManager.swift in Sources */,
 				255428B027694928009460EC /* String+Extension.swift in Sources */,
 				2557401C27725AF900F37AD8 /* CHDictionaries.swift in Sources */,
 				2557401A277249D400F37AD8 /* Reservations.swift in Sources */,
@@ -732,6 +747,7 @@
 				25E02A7C277A6F6B0093F941 /* UIHelper.swift in Sources */,
 				255740182772497F00F37AD8 /* PropertyData.swift in Sources */,
 				25F97BAC27A5D0F600561C45 /* AuthenticationViewModel.swift in Sources */,
+				25766AB827FA9D2000451694 /* SMSCodeVerificationVC.swift in Sources */,
 				2557400F27714E4800F37AD8 /* Service.swift in Sources */,
 				255428A2276508C1009460EC /* CHButton.swift in Sources */,
 				2554286927626D9D009460EC /* SceneDelegate.swift in Sources */,
