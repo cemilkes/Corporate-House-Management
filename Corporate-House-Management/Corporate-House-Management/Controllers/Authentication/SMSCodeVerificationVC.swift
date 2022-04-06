@@ -9,6 +9,9 @@ import UIKit
 
 class SMSCodeVerificationVC: UIViewController, UITextFieldDelegate {
 
+    
+    let submitButton = CHButton(backgroundColor: .systemCyan, title: "SUBMIT")
+    
     private let smsCodeTextField: UITextField = {
         let field = UITextField()
         field.backgroundColor = .secondarySystemBackground
@@ -21,12 +24,27 @@ class SMSCodeVerificationVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .systemBackground
+        
+        configureSmsCodeTextField()
+        configureSubmitButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        smsCodeTextField.becomeFirstResponder()
+    }
+    
+    func configureSmsCodeTextField() {
         view.addSubview(smsCodeTextField)
-        smsCodeTextField.frame = CGRect(x: 0, y: 0, width: 220, height: 50)
-        smsCodeTextField.center = view.center
         smsCodeTextField.delegate = self
-        // Do any additional setup after loading the view.
+        smsCodeTextField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            smsCodeTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            smsCodeTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            smsCodeTextField.heightAnchor.constraint(equalToConstant: 50),
+            smsCodeTextField.widthAnchor.constraint(equalToConstant: 220)
+        ])
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -49,14 +67,37 @@ class SMSCodeVerificationVC: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureSubmitButton() {
+        view.addSubview(submitButton)
+        submitButton.addTarget(nil, action: #selector(didTapSubmitButton), for: .touchUpInside)
+        let padding: CGFloat = 18
+        
+        NSLayoutConstraint.activate([
+            submitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            submitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            submitButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -padding),
+            submitButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
     }
-    */
+
+    
+    @objc func didTapSubmitButton() {
+        smsCodeTextField.resignFirstResponder()
+        if let text = smsCodeTextField.text, !text.isEmpty {
+            let verificationCode = text
+            
+            AuthManager.shared.verifyCode(smsCode: verificationCode) { [weak self] success in
+                guard success else { return }
+                DispatchQueue.main.async {
+                    let vc      = TabbarVC()
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true, completion: nil)
+                }
+            }
+        }else {
+            print("Phone number field is empty")
+        }
+    }
 
 }

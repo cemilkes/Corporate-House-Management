@@ -100,7 +100,6 @@ class JanitorHoursVC: UIViewController {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         tableView.addSubview(headerView)
         
-        
         headerView.backgroundColor = .systemBackground
         let padding: CGFloat        = 8
         
@@ -109,14 +108,14 @@ class JanitorHoursVC: UIViewController {
         
         NSLayoutConstraint.activate([
             currentTotalServiceFeeLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: padding),
-            currentTotalServiceFeeLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -padding),
+            currentTotalServiceFeeLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -24),
             currentTotalServiceFeeLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -padding),
             currentTotalServiceFeeLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
         
         delayWithSeconds(1) {
             //print("totalServiceFees: \(self.totalServiceFees)")
-            currentTotalServiceFeeLabel.text = "totalServiceFees: \(self.totalServiceFees)"
+            currentTotalServiceFeeLabel.text = "Total: $\(self.totalServiceFees)"
         }
 
         tableView.tableHeaderView = headerView
